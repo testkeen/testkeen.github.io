@@ -32,6 +32,7 @@
         }
 		.desk {
 			position: absolute;
+			top: 25px;
 			right: 15%;
 			font-size: 20px;
 			cursor: pointer;
@@ -381,7 +382,7 @@
     let counterElement = document.getElementById('counter');
     let count = 0;
     let target = 200;
-    let speed = 10; // Increase this value to slow down the counting
+    let speed = 40; // Increase this value to slow down the counting
 
     function updateCounter() {
         if (count <= target) {
