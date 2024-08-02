@@ -103,8 +103,8 @@
 		}
 		
         .intro {
-			text-align: center;
-			font-size: 30px;
+	    text-align: center;
+	    font-size: 30px;
             margin-bottom: 40px;
             margin-top: 110px;
         }
@@ -201,9 +201,9 @@
 </a>
 		<img src="https://raw.githubusercontent.com/testkeen/ico/a8745a4bfc044fb6bf0331854169eb30da371ba9/horizontal-blue-line.svg" alt="DeskBar" class="desk-bar">
 	</div>
-    <div class="intro">
-		Get <span style="color: red;">two full sets everyday</span> with <span style="color: #FF671F;">200</span> selected questions, with <span style="color: #046A38;">Current Affairs</span>. One stop solution <span style="color: #06038D;">for all competitive exams</span>.
-    </div>
+<div class="intro">
+    Get <span style="color: red;">two full sets</span> everyday! <span id="counter" style="color: #FF6900;">000</span> selected questions with <span style="color: #046A38;">Current Affairs</span>. One stop solution <span style="color: #06038D;">for all competitive exams</span>.
+</div>
 
 
 <div class="container">	
@@ -385,7 +385,25 @@
      }
    });
 </script>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    let counterElement = document.getElementById('counter');
+    let count = 0;
+    let target = 200;
+    let speed = 10; // Increase this value to slow down the counting
 
+    function updateCounter() {
+        if (count <= target) {
+            counterElement.textContent = String(count).padStart(3, '0');
+            count++;
+            setTimeout(updateCounter, speed);
+        }
+    }
+
+    updateCounter();
+});
+
+</script>
     <footer>
         <a href="acknowledgement.html">Acknowledgement</a> · 
         <a href="policy.html">Policy</a> · 
