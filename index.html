@@ -257,9 +257,19 @@
             }
         }
 
+	    <link rel="stylesheet" href="announcement-banner.css">
+
     </style>
 </head>
 <body>
+
+<!-- Announcement Banner -->
+    <div id="announcement-banner">
+        <img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Announcement Icon">
+        <span>There will be no daily tests on August 15.</span>
+        <img id="close-banner" src="https://raw.githubusercontent.com/testkeen/ico/891168f151578312791b7a99ad0295cb9a536a48/close-cross.svg" alt="Close Icon">
+    </div>
+	
     <img src="https://raw.githubusercontent.com/testkeen/testkeen.github.io/main/channels4_profile.jpg" alt="Logo" class="logo">
 	
 <div class="top-bar">
@@ -492,7 +502,10 @@
     updateCounter();
 });
 
-</script>
+</script>	
+	
+	<script src="announcement-banner.js"></script>
+
     <footer>
         <a href="acknowledgement.html">Acknowledgement</a> · 
         <a href="policy.html">Policy</a> · 
