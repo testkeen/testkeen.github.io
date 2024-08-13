@@ -216,6 +216,46 @@
 			}
 		}
 
+        .ad-container {
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 25px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .feature-list li img {
+            width: 22px;
+            height: 22px;
+            margin-right: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .feature-list li {
+                width: 48%; /* Display two items per row */
+                margin-right: 4%;
+            }
+            .feature-list li:nth-child(2n) {
+                margin-right: 0; /* Remove margin from every second item */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -302,15 +342,29 @@
         <button onclick="window.location.href='https://testkeen.github.io/demo/Demo100%20Bn.html'">Mixed100 Bn</button>
 		<a class="free-badge">DEMO</a>
 		</div>			
+    </div><br>
+
+
+    <div class="ad-container">
+        <h2>MEMBERSHIP PLAN</h2>
+        <ul class="feature-list">
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">2 different full sets daily for 1 year</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">200 mixed (all sub) MCQs daily</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">1 set in En lang + 1 in Bn lang</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">More than 700 full tests in a year</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">Full desk access + downloads for 1 year</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">Daily, weekly & monthly current affairs</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">Question pool of 30,000+ MCQs</li>
+            <li><img src="https://raw.githubusercontent.com/testkeen/ico/a827f62e0b015691fd4142617d7cf4244f2fabdd/black-tick-circle.svg" alt="Checkmark" draggable="false">Unlimited re-attempts</li>
+        </ul>
     </div>
+
 	<div class="button-group">
-		<br>
-		<div class="membership-intro">
-		Members get more than <span style="color: red;">700 full sets</span> in, and access to the mighty <span style="color: #046A38;">Desk</span> for a whole year. Don't fall behind! Missing a day means someone else is racing ahead with 200+ questions on Testkeen. Stay sharp!
-		</div>
+
         <button onclick="window.location.href='https://rzp.io/l/testkeen'">Be A Member Now ₹199/Y</button>
 		<br>
     </div>
+	
 
     <div class="text-section">
 		<br>
@@ -320,7 +374,7 @@
       <h1>FAQs</h1>
     </td>
     <td style="padding: 0; border: none; width: 100%;">
-      <hr style="border: none; border-top: 2px solid gray; width: 75%; margin: 0;"/>
+      <hr style="border: none; border-top: 2px solid gray; width: 100%; margin: 0;"/>
     </td>
   </tr>
 </table>
@@ -401,19 +455,9 @@
         </p>
 	<h2>WHAT ABOUT APP?</h2>
         <p>
-	You can quickly install the Testeen app (lite) by following the guide 
-	<a href="install-app.html" style="text-decoration: none;"> here 
-  	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: middle;">
-    	<path d="M10 9V3h9v9h-2V6.414L9.414 15H7v-2.414L15.586 5H10z"></path>
-    	<path d="M5 5v14h14v-5h2v5c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h5v2H5z"></path>
-  	</svg>
-	</a>.
+	You can quickly install the TestKeen App (lite) by following the guide 
+	<a href="install-app.html" style="text-decoration: none;"> here</a>.
         </p>
-    </div><br>
-		<div class="button-group">
-		<br><br>
-        <button onclick="window.location.href='https://rzp.io/l/testkeen'">Be A Member Now ₹199/Y</button>
-		<br>
     </div><br>
 
 <script>
