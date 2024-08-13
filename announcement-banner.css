@@ -6,19 +6,20 @@
     display: none;
     position: fixed;
     top: 20px;
-    right: -70%;
+    right: -100%;
     width: 70%;
     max-width: 600px;
     background-color: #f9f9f9;
     color: #333;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 9999; /* High z-index to ensure it stays on top */
     border-radius: 8px;
     transition: right 0.5s ease;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 #announcement-banner.show {
@@ -39,6 +40,7 @@
     vertical-align: middle;
     flex-grow: 1; /* Allow text to take up available space */
     text-align: left;
+    word-wrap: break-word; /* Ensure text wraps properly */
 }
 
 #close-banner {
@@ -52,7 +54,7 @@
 @media (max-width: 480px) {
     #announcement-banner {
         width: 90%; /* Use more width on smaller screens */
-        right: -90%; /* Adjust initial position */
+        right: -100%; /* Adjust initial position */
         padding: 10px;
     }
 
