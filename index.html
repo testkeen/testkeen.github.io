@@ -545,6 +545,19 @@
 </script>	
 
 <!-- 	<script src="announcement-banner.js"></script> -->
+
+    <script>
+        function closeFooter() {
+            const footer = document.getElementById("diwali-footer");
+            footer.style.transition = "opacity 1s ease, transform 1s ease"; // Add transition for smooth closing
+            footer.style.opacity = "0"; // Fade out effect
+            footer.style.transform = "translateY(100%)"; // Move down to hide
+
+            setTimeout(() => {
+                footer.style.display = "none"; // Hide after transition
+            }, 1000); // Wait for the duration of the transition
+        }
+    </script>
 	
     <footer>
         <a href="acknowledgement.html">Acknowledgement</a> · 
@@ -553,7 +566,7 @@
         &copy; 2024 TestKeen™ · All rights reserved.
     </footer>
 
-	<footer id="diwali-footer" style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(to right, #5e2b91, violet); color: white; padding: 10px; display: flex; justify-content: space-between; align-items: center; z-index: 1001; font-family: Calibri; font-size: 16px;">
+<footer id="diwali-footer" style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(to right, #5e2b91, violet); color: white; padding: 10px; display: flex; justify-content: space-between; align-items: center; z-index: 1001; font-family: Calibri; font-size: 16px;">
         <div style="flex: 1;">
             Diwali Offer: <u><strong>20% Off</u> </strong>Now at<strong><span style="text-decoration: line-through; color: violet; margin-left: 10px;">₹500</span>&nbsp;&nbsp;₹ 399</strong> 
             — Offer Valid from <strong>Oct 27</strong> to <strong>Oct 31</strong>
