@@ -565,6 +565,9 @@ display: inline-block;
 
 
     </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	
 </head>
 <body>
 
@@ -1086,6 +1089,60 @@ window.addEventListener("load", adjustGradientHeight);
 window.addEventListener("resize", adjustGradientHeight);
 	
 </script>	
+
+
+
+
+<button id="whatsapp-btn" onclick="window.open('https://api.whatsapp.com/send?phone=916291032551&text=', '_blank')">
+    <i class="fab fa-whatsapp"></i>
+</button>
+
+<script>
+    // Add CSS for floating button and animation
+    const style = document.createElement('style');
+    style.innerHTML = `
+        /* Floating WhatsApp Button */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: -100px; /* Initially set to below the screen */
+            right: 30px;
+            background-color: #25d366;
+            border: none;
+            border-radius: 50%;
+            width: 60px; /* Set width to make the button circular */
+            height: 60px; /* Set height to make the button circular */
+            padding: 0; /* Remove any extra padding */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-size: 30px;
+            color: white;
+            display: block;
+            cursor: pointer;
+            z-index: 1000;
+            transition: bottom 1s ease-in-out; /* Smooth transition for bottom property */
+        }
+
+        /* WhatsApp Icon */
+        #whatsapp-btn i {
+            font-size: 30px;
+        }
+
+        /* When the button is shown, slide it up to its final position */
+        #whatsapp-btn.show {
+            bottom: 30px; /* Final position above the screen */
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Show WhatsApp button after 5 seconds
+    window.onload = function() {
+        setTimeout(function() {
+            var btn = document.getElementById('whatsapp-btn');
+            btn.classList.add('show'); // This will make the button appear after 5 seconds with smooth transition
+        }, 5000); // Delay of 5 seconds
+    };
+</script>	
+
+	
 
 	<!-- <script src="announcement-banner.js"></script> -->
 
