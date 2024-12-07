@@ -14,7 +14,7 @@
             max-width: 80%;
             margin: auto;
             text-align: left;
-            padding: 20px;
+            padding: 20px 20px 0;
             box-sizing: border-box;
         }
 
@@ -30,11 +30,18 @@
 			pointer-events: none;
         }
 		
-        footer {
-			text-align: center;
-            margin-top: 40px;
-            font-size: 12px;
-        }
+	.modern-footer {
+		background-color: #282c34; /* Dark background for a modern look */
+		color: #ffffff; /* White text */
+		text-align: center; /* Center-align text */
+		padding: 20px 10px; /* Add padding for spacing */
+		font-family: 'Arial', sans-serif; /* Professional font */
+		font-size: 14px; /* Readable font size */
+		line-height: 1.6; /* Better line spacing */
+		border-top-left-radius: 14px; /* Curve for the top-left corner */
+		border-top-right-radius: 14px; /* Curve for the top-right corner */
+	
+	  }
 		
 		::-webkit-scrollbar {width: 0px; background-color: transparent;} 
 		
@@ -124,13 +131,16 @@
   We assure you that our commitment to data privacy is paramount, and we continually strive to create a secure and trustworthy environment for our users. If you have any concerns or questions regarding our privacy and data usage policy, please feel free to contact us at <a href="mailto:mail.testkeen@gmail.com">mail.testkeen@gmail.com</a>.
 </p>
 
-<p>Thank you for choosing Testkeen™ for your mock test needs.<br><a href="index.html" style="float: right; text-decoration: none; color: blue; font-size: 16px;">Back Home</a></p>
+<p>Thank you for choosing Testkeen™ for your mock test needs.
+	<br><br>
+	<a href="https://www.testkeen.com" style="display: inline-block; background-color: #0056b3; color: white; text-decoration: none; padding: 5px 10px; border-radius: 5px; font-size: 14px; font-family: Arial, sans-serif; text-align: center; cursor: pointer; border: none;">Back Home</a>
+</p>
 
 
         </p>
     </div><br>
 
-    <footer>
+    <footer class="modern-footer">
         &copy; 2024 TestKeen™ · All rights reserved.
     </footer>
 </body>
