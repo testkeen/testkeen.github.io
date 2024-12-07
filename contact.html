@@ -113,12 +113,32 @@
                 <span style="margin-left: 10px;">
 				<img src="https://cdn2.iconfinder.com/data/icons/communication-141/48/phone-512.png" alt="Phone Icon" style="width: 24px; height: 24px; vertical-align: middle;">
 				</span>&nbsp;&nbsp;+91 62910 32551
-                <span style="cursor: pointer; margin-left: 10px;" onclick="navigator.clipboard.writeText('+91 62910 32551')">
-                    <svg height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 8H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V10c0-1.103-.897-2-2-2z"/>
-                        <path d="M20 2H10a2 2 0 0 0-2 2v2h8a2 2 0 0 1 2 2v8h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
-                    </svg>
-                </span>
+                <span style="position: relative; cursor: pointer; margin-left: 10px;" 
+				onclick="copyToClipboard(this, '+91 62910 32551')">
+			<!-- SVG Icon -->
+			<svg height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+				<path d="M14 8H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V10c0-1.103-.897-2-2-2z"/>
+				<path d="M20 2H10a2 2 0 0 0-2 2v2h8a2 2 0 0 1 2 2v8h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
+			</svg>
+
+			<!-- Tooltip -->
+			<span class="tooltip" style="
+				position: absolute; 
+				top: -30px; 
+				left: 50%; 
+				transform: translateX(-50%);
+				background: #333; 
+				color: #fff; 
+				padding: 5px 8px; 
+				border-radius: 4px; 
+				font-size: 12px; 
+				opacity: 0; 
+				visibility: hidden; 
+				transition: opacity 0.2s, visibility 0.2s;
+			">
+				Copied!
+			</span>
+		</span>
                 <br><br>
                 <span style="margin-left: 10px;">
 				<img src="https://cdn2.iconfinder.com/data/icons/communication-141/48/email-512.png" alt="Phone Icon" style="width: 24px; height: 24px; vertical-align: middle;">
@@ -128,6 +148,21 @@
     </div>
 </div>
 
+<script>
+    function copyToClipboard(element, text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const tooltip = element.querySelector('.tooltip');
+            tooltip.style.opacity = '1';
+            tooltip.style.visibility = 'visible';
+
+            // Hide the tooltip after 2 seconds
+            setTimeout(() => {
+                tooltip.style.opacity = '0';
+                tooltip.style.visibility = 'hidden';
+            }, 2000);
+        });
+    }
+</script>
 
 <div class="office" style="padding: 10px;">
   <div class="office-container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 5px;">
