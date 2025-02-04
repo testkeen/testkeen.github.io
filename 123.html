@@ -193,11 +193,18 @@
 			font-size: 13px; 
 			text-align: left; 
 			color: #222;
-			-webkit-tap-highlight-color: transparent; /* Removes blue highlight on tap */
 		}
-	    		.dynamic-width-button:focus {
-  			outline: none; /* Removes focus outline */
-		}
+
+.button100bn, .dynamic-width-button, .btn, .start-test, .more-btn {
+  -webkit-tap-highlight-color: transparent; /* Removes blue highlight on tap */
+}
+.button100bn:focus, 
+.dynamic-width-button:focus, 
+.btn:focus,
+.more-btn, 
+.start-test:focus {
+  outline: none;
+}
 
 		.dynamic-width-button:hover, .more-btn:hover {
 			background-color: #f1f1f1;
