@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="author" content="testkeen.com">	
-<link rel="icon" href="https://raw.githubusercontent.com/testkeen/testkeen.github.io/main/TKDP_fav.png" type="image/svg+xml">
+<link rel="icon" href="https://testkeen.wordpress.com/wp-content/uploads/2025/02/tkdp_fav-1.png" type="image/svg+xml">
 <title>Testkeen − PSC WBCS, Clerkship & KP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -114,6 +114,7 @@
 			background-color: #007bff;
 			color: white;
 			cursor: pointer;
+			display: inline-block;
 		}
 
 		.popup {
@@ -194,6 +195,8 @@
 			text-align: left; 
 			color: #222;
 		}
+		
+
 
 .button100bn, .dynamic-width-button, .btn, .start-test, .more-btn {
   -webkit-tap-highlight-color: transparent; /* Removes blue highlight on tap */
@@ -208,10 +211,13 @@
 #join-button {
   -webkit-tap-highlight-color: transparent; /* Removes blue highlight */
 }
+
 #join-button:focus {
   outline: none; /* Removes focus outline */
 }
-	    
+
+
+
 		.dynamic-width-button:hover, .more-btn:hover {
 			background-color: #f1f1f1;
 		}
@@ -336,9 +342,9 @@
      style="display: inline-block;
 			position: absolute; left: 10px;	 
             margin-top: -90px; 
-            padding: 8px;">
+            padding: 8px;" draggable="false">
 
-	<img src="https://raw.githubusercontent.com/testkeen/testkeen.github.io/1ece4b103b0f486cca823d83f6406282b7410e41/Testkeen.svg" alt="Logo" style="width: 25px; height: auto; display: block; transform: translateY(20px); margin-left: 0; margin-top: -20px; user-drag: none;" oncontextmenu="return false;">
+	<img src="https://raw.githubusercontent.com/testkeen/testkeen.github.io/1ece4b103b0f486cca823d83f6406282b7410e41/Testkeen.svg" alt="Logo" style="width: 25px; height: auto; display: block; transform: translateY(20px); margin-left: 0; margin-top: -20px; user-drag: none;" oncontextmenu="return false;" draggable="false">
   <!-- <svg width="24px" height="24px" viewBox="0 0 24 24" id="align-left-2" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line" fill="#666666" stroke="#666666"> -->
     <!-- <g id="SVGRepo_bgCarrier" stroke-width="0"></g> -->
     <!-- <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> -->
@@ -561,6 +567,11 @@
 		@media (max-width: 768px) {
 			.selector, .info, .gktests, .dynalinks {
 				max-width: 97%;
+			}
+		}
+		@media (max-width: 675px) {
+			.cwtcontainer-logo-and-name {
+				display: none;
 			}
 		}
 		
@@ -1714,10 +1725,6 @@
 
     };
 
-
-
-
-
     const subjectSelect = document.getElementById('subject');
     const chapterSelect = document.getElementById('chapter');
     const topicSelect = document.getElementById('topic');
@@ -1799,7 +1806,6 @@
   </script>	
 </div>
 
-
 <script>
     function togglePopup() {
         var popup = document.getElementById("popup");
@@ -1815,7 +1821,6 @@
         }
     });
 </script>
-
 
 <style>
         .container100bn {
@@ -1945,7 +1950,7 @@
 
 <div class="info">
 <div class="left-links">
-   <button class="btn info-btn" onclick="togglePopup()" style="font-family: 'Open Sans', sans-serif;">Info</button>
+   <button class="btn info-btn" onclick="togglePopup()" style="font-family: 'Open Sans', sans-serif;  display: inline-block; width: auto; white-space: nowrap;">Info</button>
 
     <div class="popup" id="popup">
         <a href="https://testkeen.com/contact" class="btn">Contact</a>
@@ -1987,8 +1992,7 @@
         }
     });
 </script>
-
-
+	
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     function updateBlueDots() {
@@ -2036,10 +2040,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
-
-
-
-
-
 </body>
 </html>
