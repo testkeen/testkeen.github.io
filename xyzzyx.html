@@ -193,8 +193,8 @@
 			color: #222;
 		}
 		
-		.button100bn, .dynamic-width-button, .btn, .start-test, .more-btn {
-		  -webkit-tap-highlight-color: transparent; /* Removes blue highlight on tap */
+		.button100bn, .dynamic-width-button, .btn, .start-test, .more-btn, .cwtcontainer-search-and-name {
+		  -webkit-tap-highlight-color: transparent; 
 		}
 		.button100bn:focus, 
 		.dynamic-width-button:focus, 
@@ -204,11 +204,11 @@
 		  outline: none;
 		}
 		#join-button {
-		  -webkit-tap-highlight-color: transparent; /* Removes blue highlight */
+		  -webkit-tap-highlight-color: transparent; 
 		}
 
 		#join-button:focus {
-		  outline: none; /* Removes focus outline */
+		  outline: none; 
 		}
 
 		.dynamic-width-button:hover, .more-btn:hover {
@@ -250,6 +250,7 @@
 			background-color: white; 
 			border-radius: 50%;
 			border: 1px solid white;
+			z-index: 1001;
 		}
 		.info-container {
 			position: relative;
@@ -314,10 +315,10 @@
 		}
         .blue-dot {
             position: absolute;
-            top: 4px;
-            right: 25px;
-            width: 5px;
-            height: 5px;
+            top: -6px;
+            right: 12px;
+            width: 4px;
+            height: 4px;
             background-color: #697FBD;
             border-radius: 50%;
             display: block;
@@ -363,13 +364,16 @@
 		  background: #f4f4f4;
 		  border-radius: 30px; 
 		  user-select: none;
-		  margin-top: 100px;
-		  z-index: -1 !important;
+		  margin-top: 100px;		  
 		}
 		@media (max-width: 560px) {
 			.cwtcontainer {
 			  margin-top: auto;
 			}
+		}
+		
+		.vidyaquote {
+		z-index: 1 !important;
 		}
 		
 		select, button {
@@ -478,19 +482,116 @@
 			user-select: none; 
 			pointer-events: none;						
         }
+
+.cwtcontainer-search-and-name {
+            display: flex;
+            align-items: left;
+            justify-content: space-between;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: left;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .search-container:hover {
+            background: #F4F4F4;
+        }
+
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .search-input {
+			font-family: "Open Sans", serif;
+            width: 0;
+            opacity: 0;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            transition: width 0.5s ease, opacity 0.5s ease;
+            background: transparent;
+        }
+		
+		.search-container.active .search-icon path {
+			stroke: #0884fc;
+		}
+
+		.search-container .search-icon path {
+			stroke: #464455; 
+		}		
+
+        .search-container.active .search-input {
+            width: 180px;
+            opacity: 1;
+        }
+		@media (min-width: 768px) {
+			.search-container.active .search-input {
+				width: 400px;
+			}
+		}		
+		@media (max-width: 350px) {  
+			.search-container:has(.search-input:not(:placeholder-shown)) + .testdesk {
+				display: none;
+			}
+		}
+	
+		.search-results {
+			margin-top: 30px;
+			position: absolute;
+			width: 300px;
+			max-height: 200px;
+			overflow-y: auto; 
+			overflow-x: hidden;
+			display: none;
+			z-index: 10000;
+			border-radius: 4px;
+		}
+
+		.search-result-item {
+			padding: 8px;
+			cursor: pointer;
+			font-size: 14px;
+		}
+
+		.search-result-item:hover {
+			color: #0884fc; 
+			background: transparent; 
+		}
+		.search-results::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		.search-results::-webkit-scrollbar-thumb {
+			background-color: #888;
+			border-radius: 4px;
+		}
+
+		.search-results::-webkit-scrollbar-thumb:hover {
+			background-color: #555;
+		}
+		
 </style>
 </head>
 <body>
 <div id="sidebar-toggle" style="display: inline-block; position: absolute; left: 10px; margin-top: -90px; padding: 8px;" draggable="false"> <img src="https://raw.githubusercontent.com/testkeen/testkeen.github.io/1ece4b103b0f486cca823d83f6406282b7410e41/Testkeen.svg" alt="Logo" style="width: 25px; height: auto; display: block; transform: translateY(20px); margin-left: 0; margin-top: -20px; user-drag: none;" oncontextmenu="return false;" draggable="false"></div>
 <div class="top-bar"><div class="join">
 <div id="loading-spinner" style="display: inline-block; padding: 3px 10px; text-align: center; vertical-align: center; ">
-<svg width="20px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none"> <circle cx="25" cy="25" r="20" stroke="#666666" stroke-width="5" fill="none" stroke-dasharray="0 125.6" stroke-linecap="round" transform="rotate(-90, 25, 25)"> <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1.5s" repeatCount="indefinite" keyTimes="0;1" keySplines="0.42, 0.0, 0.58, 1.0" /> <animate attributeName="stroke-dasharray" values="20 125.6;61.4 94.2" dur="4s" repeatCount="indefinite" keyTimes="0;1" keySplines="0.42, 0.0, 0.58, 1.0" /> </circle> </svg></div>
+<svg width="14px" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none"> <defs><linearGradient x1="0%" y1="100%" x2="100%" y2="100%" id="linearGradient-1"> <stop stop-color="#666" stop-opacity="0" offset="0%"></stop> <stop stop-color="#666" stop-opacity="0.50" offset="39.9430698%"></stop> <stop stop-color="#666" offset="100%"></stop> </linearGradient></defs> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <rect fill-opacity="0.01" fill="none" x="0" y="0" width="36" height="36"></rect> <path d="M34,18 C34,9.163444 26.836556,2 18,2 C11.6597233,2 6.18078805,5.68784135 3.59122325,11.0354951" stroke="url(#linearGradient-1)" stroke-width="4" stroke-linecap="round" transform="rotate(-90, 18, 18)"> <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.8s" repeatCount="indefinite" keyTimes="0;1" keySplines="0.42, 0.0, 0.58, 1.0" /></path></g></svg></div>
 <a id="join-button" href="https://www.testkeen.com/membership" style="display: none; padding: 3px 10px; background-color: #f4f4f4; color: 666666; text-decoration: none; font-size: 16px; border-radius: 30%; text-align: center; opacity: 0.5; vertical-align: center; " title="Subscribe"><svg fill="#444" height="14px" width="14px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 220 220" xml:space="preserve" stroke="#444"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path d="M220,98.865c0-12.728-10.355-23.083-23.083-23.083s-23.083,10.355-23.083,23.083c0,5.79,2.148,11.084,5.681,15.14 l-23.862,21.89L125.22,73.002l17.787-20.892l-32.882-38.623L77.244,52.111l16.995,19.962l-30.216,63.464l-23.527-21.544 c3.528-4.055,5.671-9.344,5.671-15.128c0-12.728-10.355-23.083-23.083-23.083C10.355,75.782,0,86.137,0,98.865 c0,11.794,8.895,21.545,20.328,22.913l7.073,84.735H192.6l7.073-84.735C211.105,120.41,220,110.659,220,98.865z"></path> </g></svg></a></div></div>
 <div class="intro" style="margin-bottom: 100px;"></div>
 <div class="dynalinks"> 
-<button class="dynamic-width-button" data-test="DailySet" data-version="1" data-url="https://sites.google.com/view/m100ptests/mixed100-en"><svg fill="#e2c922" style="vertical-align: middle; margin-right: 8px;" width="20px" height="20px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Updates Daily</title> <path d="M12 10.938c-1.375 0-2.5-1.125-2.5-2.5 0-1.406 1.125-2.5 2.5-2.5s2.5 1.094 2.5 2.5c0 1.375-1.125 2.5-2.5 2.5zM2.031 9.906c1.094 0 1.969 0.906 1.969 2 0 1.125-0.875 2-1.969 2-1.125 0-2.031-0.875-2.031-2 0-1.094 0.906-2 2.031-2zM22.031 9.906c1.094 0 1.969 0.906 1.969 2 0 1.125-0.875 2-1.969 2-1.125 0-2.031-0.875-2.031-2 0-1.094 0.906-2 2.031-2zM4.219 23.719l-1.656-9.063c0.5-0.094 0.969-0.375 1.344-0.688 1.031 0.938 2.344 1.844 3.594 1.844 1.5 0 2.719-2.313 3.563-4.25 0.281 0.094 0.625 0.188 0.938 0.188s0.656-0.094 0.938-0.188c0.844 1.938 2.063 4.25 3.563 4.25 1.25 0 2.563-0.906 3.594-1.844 0.375 0.313 0.844 0.594 1.344 0.688l-1.656 9.063h-15.563zM3.875 24.5h16.25v1.531h-16.25v-1.531z"></path> </g></svg> <span style="">Daily Set&nbsp;&nbsp;&nbsp;&nbsp;</span><div class="info-container" onclick="event.stopPropagation();"><svg class="dt-info" width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.696-3.534c.63 0 1.332-.288 2.196-1.458l.911-1.22a.334.334 0 0 0-.074-.472.38.38 0 0 0-.505.06l-1.475 1.679a.241.241 0 0 1-.279.061.211.211 0 0 1-.12-.244l1.858-7.446a.499.499 0 0 0-.575-.613l-3.35.613a.35.35 0 0 0-.276.258l-.086.334a.25.25 0 0 0 .243.312h1.73l-1.476 5.922c-.054.234-.144.63-.144.918 0 .666.396 1.296 1.422 1.296zm1.83-10.536c.702 0 1.242-.414 1.386-1.044.036-.144.054-.306.054-.414 0-.504-.396-.972-1.134-.972-.702 0-1.242.414-1.386 1.044a1.868 1.868 0 0 0-.054.414c0 .504.396.972 1.134.972z" fill="#000000"></path></svg><div class="tooltip">Updated on Jan 31<br>Members only</div></div><span class="blue-dot"></span></button>
-<button class="dynamic-width-button" id="toggleButton" data-test="BanglaSets" data-version="304"><svg width="20" height="20" viewBox="0 0 60 60" style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg"><style>@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');</style><circle cx="30" cy="30" r="27" stroke="black" stroke-width="2" fill="none" /><text x="30" y="34" font-size="40" font-family="Tiro Bangla, sans-serif" fill="black" text-anchor="middle" dominant-baseline="middle">ব</text></svg><span style="font-weight: 400;">&nbsp;&nbsp;১০৩-টি বাংলা সেট&nbsp;&nbsp;</span><span class="blue-dot"></span> </button>
-<button class="dynamic-width-button" data-test="JanuaryCA" data-version="1" data-url="https://sites.google.com/view/monthlyca/2025/january"><svg width="20px" height="20px" viewBox="0 0 48 48" style="vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.c{fill:none;stroke:#ea0b0b;stroke-linecap:round;stroke-linejoin:round;}</style> </defs> <g id="a"> <g> <line class="c" x1="21.25" y1="20.925" x2="24.75" y2="19"></line> <line class="c" x1="24.75" y1="19" x2="24.75" y2="33"></line> </g> </g> <g id="b"> <path class="c" d="m8.0988,7.8588c-1.0601,0-1.9194.8593-1.9194,1.9194v31.8025c0,1.06.8593,1.9193,1.9193,1.9193h31.8025c1.06,0,1.9193-.8592,1.9194-1.9192h0V9.7782c0-1.0601-.8593-1.9194-1.9194-1.9194H8.0988Z"></path> <line class="c" x1="12.8166" y1="10.258" x2="12.8166" y2="4.5"></line> <line class="c" x1="35.1834" y1="10.258" x2="35.1834" y2="4.5"></line> </g> </g></svg><span style="">January CA&nbsp;&nbsp;</span><span class="blue-dot"></span></button>
+<button class="dynamic-width-button" data-test="DailySet" data-version="16" data-url="https://sites.google.com/view/m100ptests/mixed100-en"><svg fill="#e2c922" style="vertical-align: middle; margin-right: 8px;" width="20px" height="20px" viewBox="-4 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Updates Daily</title> <path d="M12 10.938c-1.375 0-2.5-1.125-2.5-2.5 0-1.406 1.125-2.5 2.5-2.5s2.5 1.094 2.5 2.5c0 1.375-1.125 2.5-2.5 2.5zM2.031 9.906c1.094 0 1.969 0.906 1.969 2 0 1.125-0.875 2-1.969 2-1.125 0-2.031-0.875-2.031-2 0-1.094 0.906-2 2.031-2zM22.031 9.906c1.094 0 1.969 0.906 1.969 2 0 1.125-0.875 2-1.969 2-1.125 0-2.031-0.875-2.031-2 0-1.094 0.906-2 2.031-2zM4.219 23.719l-1.656-9.063c0.5-0.094 0.969-0.375 1.344-0.688 1.031 0.938 2.344 1.844 3.594 1.844 1.5 0 2.719-2.313 3.563-4.25 0.281 0.094 0.625 0.188 0.938 0.188s0.656-0.094 0.938-0.188c0.844 1.938 2.063 4.25 3.563 4.25 1.25 0 2.563-0.906 3.594-1.844 0.375 0.313 0.844 0.594 1.344 0.688l-1.656 9.063h-15.563zM3.875 24.5h16.25v1.531h-16.25v-1.531z"></path> </g></svg> <span style="">Daily Set&nbsp;&nbsp;&nbsp;&nbsp;</span><div class="info-container" onclick="event.stopPropagation();"><svg class="dt-info" width="12px" height="12px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.696-3.534c.63 0 1.332-.288 2.196-1.458l.911-1.22a.334.334 0 0 0-.074-.472.38.38 0 0 0-.505.06l-1.475 1.679a.241.241 0 0 1-.279.061.211.211 0 0 1-.12-.244l1.858-7.446a.499.499 0 0 0-.575-.613l-3.35.613a.35.35 0 0 0-.276.258l-.086.334a.25.25 0 0 0 .243.312h1.73l-1.476 5.922c-.054.234-.144.63-.144.918 0 .666.396 1.296 1.422 1.296zm1.83-10.536c.702 0 1.242-.414 1.386-1.044.036-.144.054-.306.054-.414 0-.504-.396-.972-1.134-.972-.702 0-1.242.414-1.386 1.044a1.868 1.868 0 0 0-.054.414c0 .504.396.972 1.134.972z" fill="#000000"></path></svg><div class="tooltip">Updated on Jan 31<br>Members only</div></div><span class="blue-dot"></span></button>
+<button class="dynamic-width-button" id="toggleButton" data-test="BanglaSets" data-version="305"><svg width="20" height="20" viewBox="0 0 60 60" style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg"><style>@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap');</style><circle cx="30" cy="30" r="27" stroke="black" stroke-width="2" fill="none" /><text x="30" y="34" font-size="40" font-family="Tiro Bangla, sans-serif" fill="black" text-anchor="middle" dominant-baseline="middle">ব</text></svg><span style="font-weight: 400;">&nbsp;&nbsp;১০৫-টি বাংলা সেট&nbsp;&nbsp;</span><span class="blue-dot"></span> </button>
+<button class="dynamic-width-button" data-test="JanuaryCA" data-version="2" data-url="https://sites.google.com/view/monthlyca/2025/january"><svg width="20px" height="20px" viewBox="0 0 48 48" style="vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.c{fill:none;stroke:#ea0b0b;stroke-linecap:round;stroke-linejoin:round;}</style> </defs> <g id="a"> <g> <line class="c" x1="21.25" y1="20.925" x2="24.75" y2="19"></line> <line class="c" x1="24.75" y1="19" x2="24.75" y2="33"></line> </g> </g> <g id="b"> <path class="c" d="m8.0988,7.8588c-1.0601,0-1.9194.8593-1.9194,1.9194v31.8025c0,1.06.8593,1.9193,1.9193,1.9193h31.8025c1.06,0,1.9193-.8592,1.9194-1.9192h0V9.7782c0-1.0601-.8593-1.9194-1.9194-1.9194H8.0988Z"></path> <line class="c" x1="12.8166" y1="10.258" x2="12.8166" y2="4.5"></line> <line class="c" x1="35.1834" y1="10.258" x2="35.1834" y2="4.5"></line> </g> </g></svg><span style="">January CA&nbsp;&nbsp;</span><span class="blue-dot"></span></button>
 <button class="dynamic-width-button" data-test="UnionBudget" data-version="2" data-url="https://testkeen.com/special-gk
 /union-budget"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/150px-Emblem_of_India.svg.png" oncontextmenu="return false;" draggable="false" alt="icon" style="vertical-align: middle; margin-right: 8px; width: 13px; height: 18px; background: transparent;"> <span>Union Budget&nbsp;&nbsp;</span> <span class="blue-dot"></span> </button>
 <span class="extra-buttons">
@@ -501,16 +602,26 @@
 <button class="dynamic-width-button" data-test="Olympics" data-version="1" data-url="https://testkeen.com/special-gk/summer-olympics"><svg height="20px" width="20px" version="1.1" id="Capa_1" style="vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#F3D55B;" d="M19.369,26.473c0.152-0.009,0.302-0.023,0.456-0.023c0.171,0,0.338,0.015,0.506,0.026 c-0.013-0.208-0.032-0.414-0.032-0.625c0-0.466,0.044-0.922,0.108-1.371c-0.194-0.012-0.386-0.03-0.583-0.03 c-0.18,0-0.356,0.017-0.534,0.027c0.064,0.45,0.109,0.906,0.109,1.373C19.4,26.06,19.382,26.266,19.369,26.473z"></path> <path style="fill:#F3D55B;" d="M17.324,26.875c0.045-0.336,0.076-0.677,0.076-1.025c0-0.361-0.034-0.713-0.082-1.06 c-3.942,1.057-6.893,4.533-7.162,8.737c0.712-0.042,1.397-0.179,2.045-0.402C12.592,30.209,14.616,27.809,17.324,26.875z"></path> <path style="fill:#F3D55B;" d="M19.825,41.85c-3.886,0-7.099-2.895-7.618-6.64c-0.635,0.17-1.294,0.276-1.973,0.313 c0.671,4.699,4.71,8.327,9.591,8.327c4.882,0,8.922-3.629,9.592-8.329c-0.678-0.041-1.337-0.149-1.971-0.323 C26.932,38.949,23.715,41.85,19.825,41.85z"></path> <path style="fill:#F3D55B;" d="M22.38,24.802c-0.047,0.344-0.08,0.692-0.08,1.048c0,0.355,0.033,0.702,0.079,1.044 c2.675,0.945,4.673,3.323,5.067,6.212c0.648,0.229,1.334,0.372,2.048,0.419C29.225,29.339,26.297,25.874,22.38,24.802z"></path> <path style="fill:#24AE5F;" d="M37.63,26.831c0.041-0.322,0.07-0.648,0.07-0.981c0-0.37-0.035-0.732-0.086-1.088 c-3.997,1.022-7.001,4.526-7.27,8.771c0.708-0.031,1.392-0.153,2.038-0.364C32.764,30.19,34.849,27.739,37.63,26.831z"></path> <path style="fill:#24AE5F;" d="M42.686,26.938c2.602,0.968,4.539,3.299,4.941,6.124c0.649,0.241,1.337,0.399,2.054,0.457 c-0.269-4.145-3.144-7.584-7.006-8.689c-0.045,0.335-0.076,0.673-0.076,1.02C42.6,26.22,42.635,26.581,42.686,26.938z"></path> <path style="fill:#24AE5F;" d="M40.013,41.85c-3.876,0-7.083-2.881-7.614-6.612c-0.637,0.163-1.297,0.262-1.976,0.291 c0.673,4.696,4.711,8.321,9.591,8.321c4.884,0,8.926-3.632,9.593-8.335c-0.678-0.048-1.336-0.164-1.968-0.345 C47.136,38.934,43.912,41.85,40.013,41.85z"></path> <path style="fill:#24AE5F;" d="M39.669,26.467c0.115-0.005,0.228-0.017,0.344-0.017c0.209,0,0.414,0.015,0.619,0.031 c-0.014-0.21-0.032-0.418-0.032-0.631c0-0.465,0.044-0.918,0.108-1.365c-0.23-0.016-0.46-0.035-0.694-0.035 c-0.143,0-0.281,0.015-0.422,0.021c0.065,0.452,0.11,0.91,0.11,1.379C39.7,26.058,39.682,26.262,39.669,26.467z"></path> <path style="fill:#0096E6;" d="M19.369,26.473c-0.712,0.042-1.397,0.179-2.045,0.402c-0.39,2.916-2.415,5.316-5.123,6.25 c-0.045,0.336-0.076,0.677-0.076,1.025c0,0.361,0.034,0.713,0.082,1.06C16.148,34.153,19.1,30.677,19.369,26.473z"></path> <path style="fill:#0096E6;" d="M10.157,33.527C10.005,33.536,9.854,33.55,9.7,33.55c-4.246,0-7.7-3.454-7.7-7.7s3.454-7.7,7.7-7.7 c3.886,0,7.099,2.895,7.618,6.64c0.635-0.17,1.294-0.276,1.973-0.313c-0.671-4.699-4.71-8.327-9.591-8.327 c-5.349,0-9.7,4.352-9.7,9.7s4.352,9.7,9.7,9.7c0.18,0,0.356-0.017,0.534-0.027c-0.064-0.45-0.109-0.906-0.109-1.373 C10.125,33.94,10.143,33.734,10.157,33.527z"></path> <path style="fill:#F3D55B;" d="M12.125,34.15c0-0.348,0.031-0.689,0.076-1.025c-0.647,0.223-1.333,0.36-2.045,0.402 c-0.013,0.207-0.032,0.413-0.032,0.623c0,0.467,0.045,0.923,0.109,1.373c0.679-0.037,1.338-0.143,1.973-0.313 C12.159,34.862,12.125,34.51,12.125,34.15z"></path> <path style="fill:#0096E6;" d="M17.4,25.85c0,0.348-0.031,0.689-0.076,1.025c0.647-0.223,1.333-0.36,2.045-0.402 c0.013-0.207,0.032-0.413,0.032-0.623c0-0.467-0.045-0.923-0.109-1.373c-0.679,0.037-1.338,0.143-1.973,0.313 C17.367,25.138,17.4,25.49,17.4,25.85z"></path> <path style="fill:#38454F;" d="M30,18.15c3.876,0,7.083,2.881,7.614,6.612c0.637-0.163,1.297-0.262,1.976-0.291 C38.917,19.775,34.879,16.15,30,16.15c-4.882,0-8.922,3.629-9.592,8.329c0.678,0.041,1.337,0.149,1.971,0.323 C22.894,21.051,26.11,18.15,30,18.15z"></path> <path style="fill:#38454F;" d="M39.669,26.467c-0.708,0.031-1.392,0.153-2.038,0.364c-0.381,2.979-2.466,5.43-5.248,6.338 c-0.041,0.322-0.07,0.648-0.07,0.981c0,0.37,0.035,0.732,0.086,1.088C36.396,34.215,39.4,30.712,39.669,26.467z"></path> <path style="fill:#38454F;" d="M30.344,33.533C30.229,33.538,30.116,33.55,30,33.55c-0.171,0-0.338-0.015-0.506-0.026 c0.013,0.208,0.032,0.414,0.032,0.625c0,0.466-0.044,0.922-0.108,1.371c0.194,0.012,0.386,0.03,0.583,0.03 c0.143,0,0.281-0.015,0.422-0.021c-0.065-0.452-0.11-0.91-0.11-1.379C30.312,33.942,30.331,33.738,30.344,33.533z"></path> <path style="fill:#38454F;" d="M22.379,26.894c-0.648-0.229-1.334-0.372-2.048-0.419c0.269,4.186,3.197,7.65,7.114,8.722 c0.047-0.344,0.08-0.692,0.08-1.048c0-0.355-0.033-0.702-0.079-1.044C24.771,32.161,22.773,29.783,22.379,26.894z"></path> <path style="fill:#38454F;" d="M29.494,33.525c-0.714-0.047-1.4-0.19-2.048-0.419c0.047,0.342,0.079,0.689,0.079,1.044 c0,0.356-0.033,0.704-0.08,1.048c0.634,0.174,1.293,0.282,1.971,0.323c0.064-0.449,0.108-0.904,0.108-1.371 C29.525,33.939,29.507,33.732,29.494,33.525z"></path> <path style="fill:#F3D55B;" d="M20.331,26.475c0.714,0.047,1.4,0.19,2.048,0.419c-0.047-0.342-0.079-0.689-0.079-1.044 c0-0.356,0.033-0.704,0.08-1.048c-0.634-0.174-1.293-0.282-1.971-0.323c-0.064,0.449-0.108,0.904-0.108,1.371 C20.3,26.061,20.318,26.268,20.331,26.475z"></path> <path style="fill:#24AE5F;" d="M32.312,34.15c0-0.333,0.028-0.659,0.07-0.981c-0.646,0.211-1.33,0.333-2.038,0.364 c-0.013,0.205-0.031,0.409-0.031,0.617c0,0.469,0.045,0.927,0.11,1.379c0.68-0.029,1.34-0.128,1.976-0.291 C32.348,34.881,32.312,34.52,32.312,34.15z"></path> <path style="fill:#38454F;" d="M37.7,25.85c0,0.333-0.028,0.659-0.07,0.981c0.646-0.211,1.33-0.333,2.038-0.364 c0.013-0.205,0.031-0.409,0.031-0.617c0-0.469-0.045-0.927-0.11-1.379c-0.68,0.029-1.34,0.128-1.976,0.291 C37.665,25.119,37.7,25.48,37.7,25.85z"></path> <path style="fill:#E64C3C;" d="M50.3,16.15c-4.884,0-8.926,3.632-9.593,8.335c0.678,0.048,1.336,0.164,1.968,0.345 c0.502-3.764,3.725-6.68,7.625-6.68c4.246,0,7.7,3.454,7.7,7.7s-3.454,7.7-7.7,7.7c-0.209,0-0.414-0.015-0.619-0.031 c0.014,0.21,0.032,0.418,0.032,0.631c0,0.465-0.044,0.918-0.108,1.365c0.23,0.016,0.46,0.035,0.694,0.035c5.349,0,9.7-4.352,9.7-9.7 S55.648,16.15,50.3,16.15z"></path> <path style="fill:#E64C3C;" d="M42.686,26.938c-0.649-0.241-1.337-0.399-2.054-0.457c0.269,4.145,3.144,7.584,7.006,8.689 c0.045-0.335,0.076-0.673,0.076-1.02c0-0.37-0.035-0.731-0.086-1.088C45.025,32.094,43.088,29.763,42.686,26.938z"></path> <path style="fill:#E64C3C;" d="M49.681,33.519c-0.717-0.057-1.405-0.215-2.054-0.457c0.051,0.356,0.086,0.718,0.086,1.088 c0,0.347-0.031,0.685-0.076,1.02c0.632,0.181,1.29,0.297,1.968,0.345c0.063-0.447,0.108-0.901,0.108-1.365 C49.713,33.937,49.695,33.729,49.681,33.519z"></path> <path style="fill:#24AE5F;" d="M40.632,26.481c0.717,0.057,1.405,0.215,2.054,0.457C42.635,26.581,42.6,26.22,42.6,25.85 c0-0.347,0.031-0.685,0.076-1.02c-0.632-0.181-1.29-0.297-1.968-0.345c-0.063,0.447-0.108,0.901-0.108,1.365 C40.6,26.063,40.618,26.271,40.632,26.481z"></path> </g></svg><span style="">Olympics&nbsp;&nbsp;</span><span class="blue-dot"></span></button>
 </span>
 <button class="more-btn" id="more-btn" onclick="showMore()"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" style="vertical-align: middle; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13 8.92226L7.92226 3.84453C6.79623 2.71849 4.97056 2.71849 3.84453 3.84453C2.71849 4.97056 2.71849 6.79623 3.84453 7.92226L16.0777 20.1555C17.2038 21.2815 19.0294 21.2815 20.1555 20.1555C21.2815 19.0294 21.2815 17.2038 20.1555 16.0777L17.0777 13" stroke="#429c21" stroke-width="1.5" stroke-linecap="round"></path> <path d="M6 10L10 6" stroke="#429c21" stroke-width="1.5" stroke-linecap="round"></path> <path d="M16.1 2.30719C16.261 1.8976 16.8385 1.8976 16.9994 2.30719L17.4298 3.40247C17.479 3.52752 17.5776 3.62651 17.7022 3.67583L18.7934 4.1078C19.2015 4.26934 19.2015 4.849 18.7934 5.01054L17.7022 5.44252C17.5776 5.49184 17.479 5.59082 17.4298 5.71587L16.9995 6.81115C16.8385 7.22074 16.261 7.22074 16.1 6.81116L15.6697 5.71587C15.6205 5.59082 15.5219 5.49184 15.3973 5.44252L14.3061 5.01054C13.898 4.849 13.898 4.26934 14.3061 4.1078L15.3973 3.67583C15.5219 3.62651 15.6205 3.52752 15.6697 3.40247L16.1 2.30719Z" stroke="#429c21"></path> <path d="M19.9672 9.12945C20.1281 8.71987 20.7057 8.71987 20.8666 9.12945L21.0235 9.5288C21.0727 9.65385 21.1713 9.75284 21.2959 9.80215L21.6937 9.95965C22.1018 10.1212 22.1018 10.7009 21.6937 10.8624L21.2959 11.0199C21.1713 11.0692 21.0727 11.1682 21.0235 11.2932L20.8666 11.6926C20.7057 12.1022 20.1281 12.1022 19.9672 11.6926L19.8103 11.2932C19.7611 11.1682 19.6625 11.0692 19.5379 11.0199L19.14 10.8624C18.732 10.7009 18.732 10.1212 19.14 9.95965L19.5379 9.80215C19.6625 9.75284 19.7611 9.65385 19.8103 9.5288L19.9672 9.12945Z" stroke="#429c21"></path> <path d="M5.1332 15.3072C5.29414 14.8976 5.87167 14.8976 6.03261 15.3072L6.18953 15.7065C6.23867 15.8316 6.33729 15.9306 6.46188 15.9799L6.85975 16.1374C7.26783 16.2989 7.26783 16.8786 6.85975 17.0401L6.46188 17.1976C6.33729 17.2469 6.23867 17.3459 6.18953 17.471L6.03261 17.8703C5.87167 18.2799 5.29414 18.2799 5.1332 17.8703L4.97628 17.471C4.92714 17.3459 4.82852 17.2469 4.70393 17.1976L4.30606 17.0401C3.89798 16.8786 3.89798 16.2989 4.30606 16.1374L4.70393 15.9799C4.82852 15.9306 4.92714 15.8316 4.97628 15.7065L5.1332 15.3072Z" stroke="#429c21"></path> </g></svg><span style="">More&nbsp;&nbsp;</span></button></div>
-<div class="selector"><div class="cwtcontainer"><div class="cwtcontainer-logo-and-name"><div style="font-size: 14px; text-align: right; font-weight: 400; color: #666;">TestDesk</div><br></div> <div style="font-family: 'Tiro Bangla', Arial, sans-serif; font-size: 18px; line-height: 1.5; text-align: center; color: #333;">নিত্য যাহা পড়িবে, নিত্য তাহা অভ্যাস করিবে।<span class="info-container"><sup><svg fill="#363636" width="10px" height="10px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M852.517 606.04C722.804 666.467 612.48 770.67 502.075 923.02c-15.746 21.725-16.38 34.927-.205 46.602 11.372 8.209 17.98 5.583 34.542-12.088 2.217-2.38 2.217-2.38 4.484-4.84 14.318-15.505 25.852-28.662 50.49-57.274 81.407-94.538 121.17-133.45 182.968-169.038 53.478-30.795 100.476 14.462 91.527 72.38-2.51 16.258-6.836 28.257-17.978 54.022-4.432 10.249-6.302 14.707-8.38 20.171-20.085 52.8-37.002 96.846-72.451 188.834l-1.696 4.4c-10.718 27.813-10.718 27.813-21.427 55.62-46.426 120.661-74.598 194.652-103.665 272.901l-1.705 4.587c-7.8 20.975-11.474 30.871-15.534 41.881-33.306 90.321-52.353 149.007-66.84 211.427-2.262 9.713-2.262 9.713-4.556 19.584-8.162 35.31-12.53 58.062-14.972 81.448-4.222 40.439-.827 73.553 11.881 101.382 14.38 31.493 45.278 54.021 80.532 59.138 58.727 8.525 115.393 7.92 163.927-3.123 27.314-6.21 54.338-14.34 80.853-24.306 76.773-28.866 150.735-73.905 222.371-133.442 62.681-52.236 121.988-115.875 184.165-194.965 5.42-6.849 5.42-6.849 10.823-13.686 18.78-23.947 27.981-39.501 31.416-55.93 3.736-17.836-11.342-35.912-23.394-29.864-5.956 2.989-12.187 9.176-21.68 21.15-6.791 8.714-10.483 13.37-14.178 17.555-14.745 16.695-30.315 33.783-47.184 51.837-27.812 29.752-56.07 58.865-97.055 100.308-20.874 21.107-47.126 39.56-75.351 53.435-45.176 22.197-85.929-5.782-81.034-55.857 3.229-33.058 11.238-67.234 23.212-100.275 26.157-72.22 47.544-130.604 94.86-259.27 20.52-55.803 29.38-79.91 40.446-110.086 32.81-89.425 59-161.415 83.919-230.875 30.784-85.803 48.175-149.762 56.227-215.81 6.08-49.817-7.78-97.46-39.389-130.216-35.047-36.312-84.896-53.039-146.979-52.305-68.692.817-148.82 23.261-222.548 57.608Zm470.186-592.224c-123.444-48.028-271.57 34.483-296.373 165.169-17.984 94.72 17.4 176.498 89.622 210.751 143.165 67.897 314.982-40.897 314.989-199.468.007-88.211-37.668-148.991-108.238-176.452Z"></path> </g></svg></sup><div class="tooltip">বিদ্যাসাগর, বর্ণপরিচয়</div></span></div><br>
+<div class="selector"><div class="cwtcontainer">
+<div class="cwtcontainer-search-and-name" style="margin-bottom: 10px;">
+    <div class="search-container" onclick="activateSearch()">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5776 14.5419C15.5805 13.53 16.2 12.1373 16.2 10.6C16.2 7.50721 13.6928 5 10.6 5C7.50721 5 5 7.50721 5 10.6C5 13.6928 7.50721 16.2 10.6 16.2C12.1555 16.2 13.5628 15.5658 14.5776 14.5419ZM14.5776 14.5419L19 19" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <input  type="text" class="search-input" placeholder="&nbsp;type a topic name">
+    </div>
+    <div class="testdesk" style="margin-top: 10px; font-size: 14px; font-weight: 400; color: #666;">TestDesk</div>
+</div>
+ <div class="vidyaquote" style="font-family: 'Tiro Bangla', Arial, sans-serif; font-size: 18px; line-height: 1.5; text-align: center; color: #333;">নিত্য যাহা পড়িবে, নিত্য তাহা অভ্যাস করিবে।<span class="info-container"><sup><svg fill="#363636" width="10px" height="10px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M852.517 606.04C722.804 666.467 612.48 770.67 502.075 923.02c-15.746 21.725-16.38 34.927-.205 46.602 11.372 8.209 17.98 5.583 34.542-12.088 2.217-2.38 2.217-2.38 4.484-4.84 14.318-15.505 25.852-28.662 50.49-57.274 81.407-94.538 121.17-133.45 182.968-169.038 53.478-30.795 100.476 14.462 91.527 72.38-2.51 16.258-6.836 28.257-17.978 54.022-4.432 10.249-6.302 14.707-8.38 20.171-20.085 52.8-37.002 96.846-72.451 188.834l-1.696 4.4c-10.718 27.813-10.718 27.813-21.427 55.62-46.426 120.661-74.598 194.652-103.665 272.901l-1.705 4.587c-7.8 20.975-11.474 30.871-15.534 41.881-33.306 90.321-52.353 149.007-66.84 211.427-2.262 9.713-2.262 9.713-4.556 19.584-8.162 35.31-12.53 58.062-14.972 81.448-4.222 40.439-.827 73.553 11.881 101.382 14.38 31.493 45.278 54.021 80.532 59.138 58.727 8.525 115.393 7.92 163.927-3.123 27.314-6.21 54.338-14.34 80.853-24.306 76.773-28.866 150.735-73.905 222.371-133.442 62.681-52.236 121.988-115.875 184.165-194.965 5.42-6.849 5.42-6.849 10.823-13.686 18.78-23.947 27.981-39.501 31.416-55.93 3.736-17.836-11.342-35.912-23.394-29.864-5.956 2.989-12.187 9.176-21.68 21.15-6.791 8.714-10.483 13.37-14.178 17.555-14.745 16.695-30.315 33.783-47.184 51.837-27.812 29.752-56.07 58.865-97.055 100.308-20.874 21.107-47.126 39.56-75.351 53.435-45.176 22.197-85.929-5.782-81.034-55.857 3.229-33.058 11.238-67.234 23.212-100.275 26.157-72.22 47.544-130.604 94.86-259.27 20.52-55.803 29.38-79.91 40.446-110.086 32.81-89.425 59-161.415 83.919-230.875 30.784-85.803 48.175-149.762 56.227-215.81 6.08-49.817-7.78-97.46-39.389-130.216-35.047-36.312-84.896-53.039-146.979-52.305-68.692.817-148.82 23.261-222.548 57.608Zm470.186-592.224c-123.444-48.028-271.57 34.483-296.373 165.169-17.984 94.72 17.4 176.498 89.622 210.751 143.165 67.897 314.982-40.897 314.989-199.468.007-88.211-37.668-148.991-108.238-176.452Z"></path> </g></svg></sup><div class="tooltip">বিদ্যাসাগর, বর্ণপরিচয়</div></span></div><br>
 <label for="subject"></label>
 <select id="subject">
 	<option value="">Select Subject</option>
 	<option value="ca">Current Affairs</option>
 	<option value="en-grammar">English</option>
-	<!-- <option value="his-ancient">His - Ancient</option> -->
-	<!-- <option value="his-medieval">His - Medieval</option> -->
-	<!-- <option value="his-modern">His - Modern</option> -->
-	<!-- <option value="pol">Indian Polity</option>  -->
+	<option value="his-ancient">History - Ancient</option>
+	<option value="his-medieval">History - Medieval</option>
+	<!-- <option value="his-modern">History - Modern</option> -->
+	<option value="pol">Indian Polity</option> 
 	<!-- <option value="geo-india">Geo - India</option> -->
 	<!-- <option value="geo-world">Geo - World</option> -->
 	<!-- <option value="eco">Eco</option> -->
@@ -519,6 +630,7 @@
 	<!-- <option value="bio">Bio</option> -->
 	<!-- <option value="math">Math</option> -->
 	<!-- <option value="com">Com</option> -->
+	<option value="gk-map-study">Map Study - GK</option>
 	<option value="pyqs-wbcs-pre">PYQs WBCS Pre.</option>
 	<option value="pyqs">PYQs Others</option>
 </select>
@@ -541,11 +653,11 @@ const subjectData = {
 	name: 'Weekly CA - Sunday Affairs',
 	topics: {
         'en-ca': { 
-            name: 'Jan 23 - Feb 1', 
+            name: 'Feb 6 - Feb 15', 
             link: 'https://testkeen.com/current-affairs/sunday-affairs-en' 
         },
         'bn-ca': { 
-            name: 'জানুয়ারী ২৩ - ফেব্রুয়ারি ১', 
+            name: 'ফেব্রুয়ারি ৬ - ফেব্রুয়ারি ১৫', 
             link: 'https://testkeen.com/current-affairs/sunday-affairs-bn' 
         },			
 		}
@@ -909,123 +1021,204 @@ const subjectData = {
       'his-ancient': {
         chapters: {
           
-		  'stone-age': {
-		  name: 'The Stone Age',
+		  'pre-historic-period': {
+		  name: 'Pre-Historic Period',
 		  topics: {
-<!-- 'overall': { name: 'Overall Stone Age', link: 'https://testkeen.com/overall-sc' }, -->
 'palaeolithic-age': { name: 'Palaeolithic Age', link: 'https://sites.google.com/view/cwtest/his-ancient/stone-age/paleolithic-age' },
 'mesolithic-age': { name: 'Mesolithic Age', link: 'https://sites.google.com/view/cwtest/his-ancient/stone-age/mesolithic-age' },
 'neolithic-age': { name: 'Neolithic Age', link: 'https://sites.google.com/view/cwtest/his-ancient/stone-age/neolithic-age' },
 'chalcolithic-age': { name: 'Chalcolithic Age', link: 'https://sites.google.com/view/cwtest/his-ancient/stone-age/chalcolithic-age' },
+'overall-php': { name: 'Overall Pre-Historic Period', link: 'https://testkeen.com/overall-sc' },
+
 		  }},		  
 		  
-          'indus-valley': {
+          'indus-valley-civilisation': {
 		  name: 'Indus Valley Civilisation',
 		  topics: {
-'overall': { name: 'Overall IVC', link: 'https://testkeen.com/overall-ivc' },
-'discovery': { name: 'Discovery', link: 'https://testkeen.com/discovery' },
-'geographical_area': { name: 'Geographical Area', link: 'https://testkeen.com/geographical-area' },
-'important-sites': { name: 'Important Sites', link: 'https://testkeen.com/important-sites' },
-'major-characteristics': { name: 'Major Characteristics of H-Sites', link: 'https://testkeen.com/major-characteristics' },
-'social-life': { name: 'Social Life', link: 'https://testkeen.com/social-life' },
-'political-life': { name: 'Political Life', link: 'https://testkeen.com/political-life' },
-'religious-life': { name: 'Religious Life', link: 'https://testkeen.com/religious-life' },
-'economic-life': { name: 'Economic Life', link: 'https://testkeen.com/economic-life' },
-'art-and-architecture': { name: 'Art and Architecture', link: 'https://testkeen.com/art-and-architecture' },
+'discovery': { name: 'IVC - Discovery', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/discovery' },
+'geographical_area': { name: 'IVC - Geographical Area', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/geographical-area' },
+'important-sites': { name: 'IVC - Important Sites', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/important-sites' },
+'characteristics-ivc': { name: 'Characteristics of H-Sites', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/characteristics-ivc' },
+'social-life': { name: 'IVC - Social Life', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/social-life' },
+'political-life': { name: 'IVC - Political Life', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/political-life' },
+'religious-life': { name: 'IVC - Religious Life', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/religious-life' },
+'economic-life': { name: 'IVC - Economic Life', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/economic-life' },
+'art-and-architecture': { name: 'IVC - Art and Architecture', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/art-and-architecture' },
+'decline-of-ivc': { name: 'Decline of IVC', tags: 'Indus Valley Civilisation', link: 'https://testkeen.com/decline-of-ivc' },
+'overall': { name: 'Overall Indus Valley Civilisation', tags: 'ivc', link: 'https://testkeen.com/overall-ivc' },
+
 		  }},		  
 
 		  
 		  
-          'vedic-age': {
-		  name: 'The Vedic Age',
+          'vedic-age-mahajanapadas': {
+		  name: 'Vedic Age & Mahajanapadas',
 		  topics: {
-'overall': { name: 'Overall Vedic Age', link: 'https://testkeen.com/overall-tve' },
+'origin_vedic_age': { name: 'Origin - Vedic Age', link: 'https://testkeen.com/origin-vedic-age' },
 'early_vedic_age': { name: 'Early Vedic Age (1500-1000 BC)', link: 'https://testkeen.com/early-vedic-age' },
 'later_vedic_period': { name: 'Later Vedic Period (1000-600 BC)', link: 'https://testkeen.com/later-vedic-period' },
 'indian_schools_of_philosophy': { name: 'Indian Schools of Philosophy', link: 'https://testkeen.com/indian-schools-of-philosophy' },
-		  }},		  
-
-		  
-          'territorial-states': {
-		  name: 'The First Territorial States',
-		  topics: {
-'overall': { name: 'Overall Territorial States', link: 'https://testkeen.com/overall-tstates' },
 'mahajanapadas': { name: 'Mahajanapadas', link: 'https://testkeen.com/mahajanapadas' },
-'rise-of-magadhan_empire': { name: 'Rise of Magadhan Empire', link: 'https://testkeen.com/rise-of-magadhan-empire' },
-'haryanka-dynasty': { name: 'Haryanka Dynasty', link: 'https://testkeen.com/haryanka-dynasty' },
-'shishunaga-dynasty': { name: 'Shishunaga Dynasty (412-344 BC)', link: 'https://testkeen.com/shishunaga-dynasty' },
-'nanda-dynasty': { name: 'Nanda Dynasty (344-323 BC)', link: 'https://testkeen.com/nanda-dynasty' },
-'pre-mauryan-economic-system': { name: 'Pre-Mauryan Economic System', link: 'https://testkeen.com/pre-mauryan-economic-system' },
-'foreign-invasions': { name: 'Foreign Invasions', link: 'https://testkeen.com/foreign-invasions' },
-'persian-invasion': { name: 'Persian Invasion', link: 'https://testkeen.com/persian-invasion' },
-'greek-invasion': { name: 'Greek Invasion', link: 'https://testkeen.com/greek-invasion' },
-			}},		  
+'magadhan_empires': { name: 'Magadhan Empires', link: 'https://testkeen.com/magadhan-empires' },
+'pre-mauryan_economy': { name: 'Pre-Mauryan Economy', link: 'https://testkeen.com/pre-mauryan-economy' },
+'persian_invasion': { name: 'Persian Invasion', link: 'https://testkeen.com/persian-invasion' },
+'greek_invasion': { name: 'Greek Invasion', link: 'https://testkeen.com/greek-invasion' },
+'overall': { name: 'Overall Vedic Age & Mahajanapadas', link: 'https://testkeen.com/overall-tve' },
+		  }},		  	  
 		  
           'religious-movements': {
-		  name: 'Religious Movements of Mahajanapada Age',
+		  name: 'Early Religious Movements',
 		  topics: {
-'overall': { name: 'Overall Test', link: 'https://testkeen.com/overall-rmmatest' },
 'jainism': { name: 'Jainism', link: 'https://testkeen.com/jainism' },
-'philosophy_of_jainism': { name: 'Philosophy of Jainism', link: 'https://testkeen.com/philosophy-of-jainism' },
-'decline_of_jainism': { name: 'Decline of Jainism', link: 'https://testkeen.com/decline-of-jainism' },
+'mahavira': { name: 'Mahavira', link: 'https://testkeen.com/mahavira' },
+'jain_philosophy_&_councils': { name: 'Jain Philosophy & Councils', link: 'https://testkeen.com/jain-philosophy-&-councils' },
+'jain_architecture_&_decline': { name: 'Jain Architecture & Decline', link: 'https://testkeen.com/jain-architecture-&-decline' },
 'buddhism': { name: 'Buddhism', link: 'https://testkeen.com/buddhism' },
-'philosophy_of_buddhism': { name: 'Philosophy of Buddhism', link: 'https://testkeen.com/philosophy-of-buddhism' },
+'buddha': { name: 'Gautama Buddha', link: 'https://testkeen.com/buddha' },
+'buddhist_philosophy_&_councils': { name: 'Buddhist Philosophy & Councils', link: 'https://testkeen.com/buddhist-philosophy-&-councils' },
+'sects_&_scholars_of_buddhism': { name: 'Sects & Scholars of Buddhism', link: 'https://testkeen.com/sects-&-scholars-of-buddhism' },
+'buddhist_mudras': { name: 'Buddhist Mudras', link: 'https://testkeen.com/buddhist-mudras' },
+'art_architecture_&_literature': { name: 'Art, Architecture & Literature', link: 'https://testkeen.com/art-architecture-&-literature' },
 'decline_of_buddhism': { name: 'Decline of Buddhism', link: 'https://testkeen.com/decline-of-buddhism' },
+'jainism_vs_Buddhism': { name: 'Jainism vs. Buddhism', link: 'https://testkeen.com/jainism-vs-Buddhism' },
 'ajivikas': { name: 'Ajivikas', link: 'https://testkeen.com/ajivikas' },
+'other_heterodox_sects': { name: 'Other Heterodox Sects', link: 'https://testkeen.com/other-heterodox-sects' },
+'overall': { name: 'Overall Religious Movements', link: 'https://testkeen.com/overall-rmmatest' },
 			}},		  
 
           'mauryan-empire': {
-            name: 'The Mauryan Empire',
+            name: 'Mauryan Empire',
             topics: {
-'overall': { name: 'Overall Mauryan Empire', link: 'https://testkeen.com/overall-mauryan-empire' },
-'ashoka': { name: 'Ashoka', link: 'https://testkeen.com/ashoka' },
-'kautilya': { name: 'Kautilya', link: 'https://testkeen.com/kautilya' },
-'mauryan-arts': { name: 'Mauryan Arts', link: 'https://testkeen.com/mauryan-arts' },
+'origin_&_sources_of_mauryans': { name: 'Origin & Sources of Mauryans', link: 'https://testkeen.com/origin-&-sources-of-mauryans' },
+'megasthenes_&_indica': { name: 'Megasthenes & Indica', tags: 'maurya', link: 'https://testkeen.com/megasthenes-&-indica' },
+'kautilya_arthashastra': { name: 'Kautilya & Arthashastra', tags: 'maurya, vishnugupta, bishnugupta, chanakya', link: 'https://testkeen.com/kautilya-arthashastra' },
+'chandragupta_maurya': { 'name': 'Chandragupta Maurya', 'link': 'https://testkeen.com/chandragupta_maurya' },
+'bindusara': { 'name': 'Bindusara, Maurya', 'link': 'https://testkeen.com/bindusara' },
+'ashoka': { name: 'Ashoka, Maurya', link: 'https://testkeen.com/ashoka' },
+'fall_of_the_mauryans': { name: 'Fall of the Mauryans', link: 'https://testkeen.com/fall-of-the-mauryans' },
+'mauryan-administration': { name: 'Mauryan Administration', link: 'https://testkeen.com/mauryan-administration' },
+'mauryan-society': { name: 'Mauryan Society', link: 'https://testkeen.com/mauryan-society' },
+'mauryan-arts': { name: 'Mauryan Art & Sculpture', link: 'https://testkeen.com/mauryan-arts' },
 'mauryan-economy': { name: 'Mauryan Economy', link: 'https://testkeen.com/mauryan-economy' },
-'later-mauryans': { name: 'Later Mauryans', link: 'https://testkeen.com/later-mauryans' }
+'alexander-the-great': { name: 'Alexander the Great', link: 'https://testkeen.com/alexander-the-great' },
+'overall': { name: 'Overall Mauryan Period', link: 'https://testkeen.com/overall-mauryan-era' },
 			}},
-
-          'sangam-age': {
-            name: 'The Sangam Age',
-            topics: {		  
-'overall': { name: 'Overall Sangam Age', link: 'https://testkeen.com/overall-sangam-age' },
-'early_kingdoms': { name: 'Early Kingdoms', link: 'https://testkeen.com/early-kingdoms' },
-'chola_kingdom': { name: 'The Chola Kingdom', link: 'https://testkeen.com/chola-kingdom' },
-'chera_kingdom': { name: 'The Chera Kingdom', link: 'https://testkeen.com/chera-kingdom' },
-'pandyan_kingdom': { name: 'The Pandyan Kingdom', link: 'https://testkeen.com/pandyan-kingdom' },
-			}},			
-		  
-          'post-mauryan': {
-            name: 'Post-Mauryan Period',
-            topics: {		  
-'overall': { name: 'Overall Post-Mauryan Period', link: 'https://testkeen.com/overall-postmperiod' },
-'archaeological_sources': { name: 'Archaeological Sources', link: 'https://testkeen.com/archaeological-sources' },
-'literary_sources': { name: 'Literary Sources', link: 'https://testkeen.com/literary-sources' },
+			
+			
+          'post-mauryan-era': {
+            name: 'Post-Mauryan Era',
+            topics: {			
+'post_mauryan_period': { name: 'Post-Mauryan Period', link: 'https://testkeen.com/post-mauryan-period' },
+'sunga_dynasty': { name: 'Sunga Dynasty', link: 'https://testkeen.com/sunga-dynasty' },
+'kanvas_&_chedis': { name: 'Kanvas & Chedis', link: 'https://testkeen.com/kanvas-&-chedis' },
+'satavahanas': { name: 'Satavahanas', link: 'https://testkeen.com/satavahanas' },
 'indo_greeks': { name: 'Indo-Greeks', link: 'https://testkeen.com/indo-greeks' },
 'scythians': { name: 'Scythians', link: 'https://testkeen.com/scythians' },
 'parthians': { name: 'Parthians', link: 'https://testkeen.com/parthians' },
 'kushanas': { name: 'Kushanas', link: 'https://testkeen.com/kushanas' },
-			}},		  
-		  
+'post_mauryan_society_&_religion': { name: 'Post-Mauryan Society and Religion', link: 'https://testkeen.com/post-mauryan-society-&-religion' },
+'post_mauryan_art': { name: 'Post-Mauryan Art & Scholars', link: 'https://testkeen.com/post-mauryan-art' },
+'overall': { name: 'Overall Post-Mauryan Era', link: 'https://testkeen.com/overall-post-mauryan-era' },			
+			
+			}},			
+
+          'sangam-age': {
+            name: 'The Sangam Age',
+            topics: {		  
+'early_south_india': { name: 'Early South India', tags: 'chola, chera, pandya, sangam', link: 'https://testkeen.com/early-south-india' },
+'chola_kingdom': { name: 'Early Chola Kingdom', tags: 'karikala, tondaiman, ilandiraiyan, venni, puhar, uraiur, tiger', link: 'https://testkeen.com/chola-kingdom' },
+'chera_kingdom': { name: 'Chera Kingdom', tags: 'udiyanjeral, nedunjeral, adan, kuttuvan, senguttuvan, redchera, goodchera, silappadikaram, shilapadikaram, kannagi, kudakko', link: 'https://testkeen.com/chera-kingdom' },
+'pandyan_kingdom': { name: 'Pandyan Kingdom', tags: 'nedunjeliyan, talaiyalanganam', link: 'https://testkeen.com/pandyan-kingdom' },
+'sangam_age_literature': { name: 'Sangam Age & Literature', tags: 'silappadikaram, shilapadikaram, chola, chera, pandya, poet, tamil, Thenmadurai, Kapatapuram, Madurai, Agastya, Nakkirar', link: 'https://testkeen.com/sangam-age-literature' },
+'sangam_age_economy': { name: 'Sangam Age Economy', tags: '', link: 'https://testkeen.com/sangam-age-economy' },
+'sangam_age_society': { name: 'Sangam Age Society', tags: '', link: 'https://testkeen.com/sangam-age-society' }
+
+
+
+
+			}},			
+
+
+          'vakatakas': {
+            name: 'Vakatakas (AD 250-500)',
+            topics: {
+'vakatakas_of_the_deccan': { name: 'Vakatakas of the Deccan', link: 'https://testkeen.com/vakatakas-of-the-deccan' },
+'vakataka_dynasty': { name: 'Vakataka Dynasty', link: 'https://testkeen.com/vakataka-dynasty' },
+'vindhyashakti_pravarasena': { name: 'Vindhyashakti I & Pravarasena', link: 'https://testkeen.com/vindhyashakti-pravarasena' },
+'rudrasena_prithvisena': { name: 'Rudrasena I & Prithvisena I', link: 'https://testkeen.com/rudrasena-prithvisena' },
+'rudrasena2_pravarasena2': { name: 'Rudrasena II & Pravarasena II', link: 'https://testkeen.com/rudrasena2-pravarasena2' },
+'narendrasena_prithivisena2': { name: 'Narendrasena & Prithivisena II', link: 'https://testkeen.com/narendrasena-prithivisena2' },
+'sarvasena_vindhyashakti2_harisena': { name: 'Sarvasena, Vindhyashakti II, & Harisena', link: 'https://testkeen.com/sarvasena-vindhyashakti2-harisena' },
+'vakatakas_society_rule': { name: 'Vakataka Society & Rule', link: 'https://testkeen.com/vakatakas-society-rule' },
+			}},	
+
+			
           'gupta-age': {
-            name: 'The Gupta Age (AD 320-500)',
+            name: 'Gupta Age (AD 320-500)',
             topics: {		  
-'overall': { name: 'Overall Gupta Age', link: 'https://testkeen.com/overall-gupta-age' },
-'historical_sources': { name: 'Historical Sources', link: 'https://testkeen.com/historical-sources' },
-'literary_sources': { name: 'Literary Sources', link: 'https://testkeen.com/literary-sources' },
-'archaeological_sources': { name: 'Archaeological Sources', link: 'https://testkeen.com/archaeological-sources' },
-'gupta_dynasty': { name: 'Gupta Dynasty', link: 'https://testkeen.com/gupta-dynasty' },
-'coinage_system': { name: 'Coinage System', link: 'https://testkeen.com/coinage-system' },
+'sources_of_gupta_age': { name: 'Sources of Gupta Age', link: 'https://testkeen.com/sources-of-gupta-age' },
+'chandragupta_i': { name: 'Chandragupta I', link: 'https://testkeen.com/chandragupta-i' },
+'samudragupta': { name: 'Samudragupta', link: 'https://testkeen.com/samudragupta' },
+'chandragupta_ii': { name: 'Chandragupta II', tags:'Vikramaditya, Bikramaditya, Kalidasa, navaratnas, nabaratnas, Varahamihira', link: 'https://testkeen.com/chandragupta-ii' },
+'kumaragupta_i': { name: 'Kumaragupta I', link: 'https://testkeen.com/kumaragupta-i' },
+'skandagupta': { name: 'Skandagupta', link: 'https://testkeen.com/skandagupta' },
+'gupta_administration': { name: 'Gupta Administration', link: 'https://testkeen.com/gupta-administration'},
 'gupta_art_and_crafts': { name: 'Gupta Art and Crafts', link: 'https://testkeen.com/gupta-art-and-crafts' },
-'decline_of_gupta_empire': { name: 'Decline of the Gupta Empire', link: 'https://testkeen.com/decline-of-gupta-empire' },
+'gupta_coinage_system': { name: 'Gupta Coinage System', link: 'https://testkeen.com/gupta-coinage-system' },
+'fall_of_gupta_empire': { name: 'Fall of the Gupta Empire', link: 'https://testkeen.com/fall-of-gupta-empire' },
+'overall_gupta_period': { name: 'Overall Gupta Period', link: 'https://testkeen.com/overall-gupta-period' },
+'post_gupta_period': { name: 'Post-Gupta Period', link: 'https://testkeen.com/post-gupta-period' },
+
 			}},		  
+
 		  
-          'post-gupta': {
-            name: 'The Post-Gupta Era (AD 550-750)',
-            topics: {		  
-'overall': { name: 'Overall Post-Gupta Era', link: 'https://testkeen.com/overall-pguptaera' },
-'ruling_dynasties_north_india': { name: 'Ruling Dynasties of North India', link: 'https://testkeen.com/ruling-dynasties-north-india' },
-'ruling_dynasties_south_india': { name: 'Ruling Dynasties of South India', link: 'https://testkeen.com/ruling-dynasties-south-india' },
+          'early-medieval-india-i': {
+            name: 'Early Medieval India - I',
+            topics: {
+'early_medieval_india_i_outline': { name: 'Early Medieval India I - Outline', tags: '', link: 'https://testkeen.com/early-medieval-india-i-outline' },
+'pushyabhutis_of_thanesar': { name: 'Pushyabhutis of Thanesar', tags: '', link: 'https://testkeen.com/pushyabhutis-thanesar' },
+'harsha_vardhana': { name: 'Harsha Vardhana', tags: 'pushyabhutis, thanesar, hiuen, tsang, banabhatta, parvatiparinay, mayura, bhartrihari, matanga', link: 'https://testkeen.com/harsha-vardhana' },
+'hiuen_tsang': { name: 'Hiuen-Tsang', tags: 'pushyabhutis, thanesar, huen, heuen', link: 'https://testkeen.com/hiuen-tsang' },
+'the_maukharies': { name: 'The Maukharies', tags: 'grahavarmana, hari varhmana maukhari, advaita varman, ishanavarmana, sarvavarmana, avanti varmana, grahavarmana, maharaja', link: 'https://testkeen.com/maukharies' },
+'the_pratihara_dynasty': { name: 'The Pratihara Dynasty', tags: 'tripartite, rajashekhar, rajshekhar, rajsekhar, mihir bhoja, mahendrapala, nagabhatta, mahipala, rajyapala, yashpala, sulaiman, almasudi', link: 'https://testkeen.com/pratihara-dynasty' },
+'the_palas_of_bengal': { name: 'The Palas, Bengal', tags: 'dynasty, tripartite, protector, gopal, khalimpur, taranath, dharma, somapuri, sompuri, deva, dev, ruhimi, ruhma, sulaiman, mahi, rama, sandhyakar, ramcharita, vikramshila, bikramshila', link: 'https://testkeen.com/palas-bengal' },
+'the_rashtrakutas': { name: 'The Rashtrakutas', tags: 'tripartite, Latur, Ellichpur,s Manyakheta, Malkhed, Dantidurga, Krishna, Kailashnatha, Ellora, Dhruva, Govinda, Amoghavarsha, Viranarayana, Kavirajamarga, Ratnamalika, Indra', link: 'https://testkeen.com/rashtrakutas' },
+'gov_eco_pala_Pratihara_rashtrakutas': { name: 'Tripartite - Governance & Economy', tags: 'pala, pratihara, rashtrakutas, bhukti, bhoga, pattala', link: 'https://testkeen.com/gov-eco-pala-Pratihara-rashtrakutas' },
+'eastern_gangas_orissa': { name: 'Eastern Gangas, Orissa', tags: '', link: 'https://testkeen.com/eastern-gangas-orissa' },
+'chalukyas_of_badami': { name: 'Western Chalukyas, Badami', tags: 'Pulkeshin, Kirtivarman, Mangalesha, Vatapi, Batapi, Ravikirti, Aihole, Vikramaditya, Vinayaditya, Lad Khan, Meguti, Ajanta, Ellora', link: 'https://testkeen.com/chalukyas-of-badami' },
+'chalukyas_of_vengi': { name: 'Eastern Chalukyas of Vengi', tags: 'Vishnuvardhana, Vijayaditya, Bhima, Rajamahendravaram', link: 'https://testkeen.com/chalukyas-of-vengi' },
+'chalukyas_of_lata': { name: 'Chalukyas of Lata', tags: 'Barappa, Tailapa, Gogi, Kirti, Vatsa, Trilochana', link: 'https://testkeen.com/chalukyas-of-lata' },
+'pallavas_of_kanchi': { name: 'Pallavas of Kanchi', tags: 'creeper, Simhavishnu, Mahendravarman, Mamallapuram, Mahamalla, Narasimhavarman, Mahabalipuram, Parameshvaraman, Rajasimha, Aparajita, Tondaimandalam', link: 'https://testkeen.com/pallavas-of-kanchi' },
+'pandyas_of_madurai': { name: 'Pandyas of Madurai', tags: 'Kadungon, Maravarman, Rajasimha, Shrimara', link: 'https://testkeen.com/pandyas-of-madurai' },
+'kadambas_of_banavasi': { name: 'Kadambas of Banavasi', tags: 'Vaijayanti', link: 'https://testkeen.com/kadambas-of-banavasi' },
+'gangas_of_mysore': { name: 'Western Gangas of Mysore', tags: 'Kolar', link: 'https://testkeen.com/gangas-of-mysore'},
+'later_chola_kingdom': { name: 'Later Chola Kingdom', tags: 'Tanjore, Vijayalaya, Bijayalaya, Aditya, Parantaka, Sundara, Uttama, Arumolivarman, Rajaraja, navy, Sailendra, Rajarajeshwara, Brihadesvara, Rajraja, Rajendra, Ceylon, Gangaikonda, Gongaikonda, Pandita, Rajadhiraja, Jayamkonda, Koppam, Kopam, Virarajendra, Athirajendra, Kollutung, Kolutung, kulotunga', link: 'https://testkeen.com/later-chola-kingdom' },
+'chola_administration': { name: 'Chola Administration', tags: 'nadu, kottam,  perumal adigal, uttaramerur, kani, kudi nikki, village ', link: 'https://testkeen.com/chola-administration' },
+'chola_society_economy': { name: 'Chola Society & Economy', tags: 'kasu, ulukudi, idangai, valangai, agrahatta', link: 'https://testkeen.com/chola-society-economy' },
+'chola_art_literature': { name: 'Chola Art and Literature', tags: 'vesara, kailashnath, hoysaleshvara, virupaksha, shravanbelagola, nataraja', link: 'https://testkeen.com/chola-art-literature' },
+'cholas_south_east_asia': { name: 'Chola & South-East Asia, China', tags: 'java, cambodia, combodia, kanfu, sailendra, malay, borobudur, angkor vat', link: 'https://testkeen.com/cholas-south-east-asia' },
+			
+			}},
+			
+          'early-medieval-india-ii': {
+            name: 'Early Medieval India - II',
+            topics: {			
+"chahamanas_chauhans": { "name": "The Chahamanas/Chauhans - Rajput", "tags": "Prithviraj Raso, Rai Pithora, Battle of Tarain, Chandbardai", "link": "https://testkeen.com/chahamanas-chauhans" },
+"chandellas": { "name": "The Chandellas - Rajput", "tags": "Nannuka, Vakpati, bakpati, Jayashakti, Rahila, Harsha, Yashovarman, Lakshmana Temple, Dhanga, Khajuraho, Ganda, Vidyadhara, Kandariya, Vijayapala, Paramardi, Madanpur", "link": "https://testkeen.com/chandellas" },
+"paramaras": { "name": "The Paramaras - Rajput", "tags": "Dhara, Upendra, Siyaka, Munja, Sindhuraja, Bhoja, Jayasimha, Lakshmadeva, Nagpur Prashasti", "link": "https://testkeen.com/paramaras" },
+"solanki": { "name": "The Solanki - Rajput", "tags": "Mulraja, Bhima, Karan, Jayasimha Siddharaja, Kumarapala", "link": "https://testkeen.com/solanki" },
+"tomaras": { "name": "The Tomaras - Rajput", "tags": "Dhillika, Delhi, Anangapala,  Suraj Kund reservoir", "link": "https://testkeen.com/tomaras" },
+"gahadavalas": { "name": "The Gahadavalas - Rajput", "tags": "Suryavanshi, Kannauj, Banaras, Chandradeva, Govind, Vijaya, Jai ", "link": "https://testkeen.com/gahadavalas" },
+"karkota_dynasty": { "name": "Karkota Dynasty", "tags": "Durlabh Vardhana, Lalitaditya, Muktapida, Martand Sun Temple, Kashmir, Vajraditya, Jayapida", "link": "https://testkeen.com/karkota-dynasty" },
+"utpala_dynasty": { "name": "Utpala Dynasty", "tags": "Avanti Varman, Avantiswami, Sankara", "link": "https://testkeen.com/utpala-dynasty" },
+"yashaskara_dynasty": { "name": "Yashaskara Dynasty", "tags": "Queen Didda, Kshemagupta", "link": "https://testkeen.com/yashaskara-dynasty" },
+"hindu_shahi_dynasty": { "name": "Hindu Shahi Dynasty", "tags": "Kallar, Lagaturman, Lalliyashahi, Udabhanda, Jayapala, Anandapala, Chach, Trilochanpala, Bheempala", "link": "https://testkeen.com/hindu-shahi-dynasty" },
+"chedis_tripuri": { "name": "The Chedis, Tripuri", "tags": "Kalachuri, Dahala-mandala, Kokkala, Yuvaraja, Lakshmanaraja, Gangeya-deva, Rajasekara, Viddhasalabhanjika, Trikalingadhipati, Lakshmi-Karna, Yashkarna, Vijayasimha", "link": "https://testkeen.com/chedis-tripuri" },
+"sena_dynasty": { "name": "Sena Dynasty, Bengal", "tags": "Vijaya, Deopara, Ballal, Umapati, Barrackpore, Sriharsha, Nabadwip, Kulinism, Danasagara, Adbhutsagara, Lakshamana, Ariraja-Madana Sankara, Jayadeva, Halayudha", "link": "https://testkeen.com/sena-dynasty" },
+"eastern_ganga_dynasty": { "name": "Eastern Ganga, Orissa", "tags": "Dynasty, Kalinganagara, Sun Temple, Konark, Anantavarman, Trikalingadhipathi, Trikalingadhipathi, Jagannath, Narsimhadeva", "link": "https://testkeen.com/eastern-ganga-dynasty" },
+"western_chalukyas_kalyani": { "name": "Western Chalukyas, Kalyani", "tags": "Tailapa, Satyasraya, Someshvara, Vikramaditya, Bilhana, Vijnaneswara, Vikramankadeva Charitra, Vijnaneshwara, Mitakshara", "link": "https://testkeen.com/western-chalukyas-kalyani" },
+
+
 			}},
 		  
         }
@@ -1036,12 +1229,41 @@ const subjectData = {
 
       'his-medieval': {
         chapters: {
-		  'sultanate-of-delhi': 'The Sultanate of Delhi',
+		  'arab-turkish-invasion': {
+			name: 'Arab and Turkish Invasion',
+			topics: {
+'a_brief_history_of_islam': { name: 'A Brief History of Islam', tags: 'Muhammad, Allah, Prophet, Quran, Muslims', link: 'https://testkeen.com/a-brief-history-of-islam' },
+'ghaznavids_&_mahmud_of_ghazni': { name: 'Ghaznavids & Mahmud of Ghazni', tags: 'Ghazi, Alptagin, Firdausi, Muhammad bin Qasim, Subuktagin, Jayapala, 17, Waihind, Thaneshwar, Kannauj, Somnath temple, Al Biruni,  Kitab-ul-Hind, Shahnama, Utbi, Masud', link: 'https://testkeen.com/ghaznavids-and-mahmud-of-ghazni' },
+'ghurids_&_muhammad_ghori': { name: 'Ghurids & Muhammad Ghori', tags: 'Seljuk, Mohd, Tarain, Tabarhinda, Bhatinda, Chandwar, Qutab, Bakhtiyar', link: 'https://testkeen.com/ghurids-and-muhammad-ghori' },
+'overall_arab_turkish_invasion': { name: 'Overall Arab-Turkish Invasion', tags: '', link: 'https://testkeen.com/overall-arab-turkish-invasion' },
+ 			
+		  			}},
+					
+          'delhi-sultanate': {
+			name: 'Delhi Sultanate',
+			topics: {
+				
+'slave_dynasty_1206_1290': { name: 'Slave Dynasty (1206-1290)', tags: '', link: 'https://testkeen.com/slave-dynasty-1206-1290' },
+'khalji_dynasty_1290_1320': { name: 'Khalji dynasty (1290-1320)', tags: '', link: 'https://testkeen.com/khalji-dynasty-1290-1320' },
+'administration_of_alauddin_khalji': { name: 'Administration of Alauddin Khalji', tags: '', link: 'https://testkeen.com/administration-of-alauddin-khalji' },
+'tughlaq_dynasty_1320_1414': { name: 'Tughlaq dynasty (1320-1414)', tags: '', link: 'https://testkeen.com/tughlaq-dynasty-1320-1414' },
+'saiyyad_dynasty_1414_1451': { name: 'Saiyyad dynasty (1414-1451)', tags: '', link: 'https://testkeen.com/saiyyad-dynasty-1414-1451' },
+'lodhi_dynasty_1451_1526': { name: 'Lodhi dynasty (1451-1526)', tags: '', link: 'https://testkeen.com/lodhi-dynasty-1451-1526' },
+'administration_sultanate_period': { name: 'Administration, Sultanate Period', tags: '', link: 'https://testkeen.com/administration-sultanate-period' },
+'sultanat_society_and_economy': { name: 'Society & Economy, Sultanate Period', tags: '', link: 'https://testkeen.com/sultanat-society-and-economy' },
+'sultanat_art_architecture': { name: 'Art & Architecture, Sultanate Period', tags: '', link: 'https://testkeen.com/sultanat-art-architecture' },
+'sultanat_music_literature': { name: 'Music & Literature, Sultanate Period', tags: '', link: 'https://testkeen.com/sultanat-music-literature' },
+'overall_delhi_sultanat': { name: 'Overall Delhi Sultanate', tags: '', link: 'https://testkeen.com/overall-delhi-sultanat' },
+				
+		  		  
+	}},	 
+	
 		  'provincial-kingdoms': 'Provincial Kingdoms',
 		  'religious-movements': 'Religious Movements',
 	      'mughal-empire': 'The Mughal Empire',
-		  'maratha-mEmpire': 'The Maratha Empire',
-          'mughal-decline': 'Mughal Decline and Rise of Regional States',
+		  'maratha-Empire': 'The Maratha Empire',
+          'mughal-decline': 'Mughal Decline',
+		  'rise-of-regional-states': 'Rise of Regional States'
 		  
 		}
 	  },		
@@ -1486,23 +1708,23 @@ const subjectData = {
 	name: 'History',
 	topics: {
 		'anc-ind': { 
-            name: 'Ancient India', 
+            name: 'Ancient India, WBCS PYQs', 
             link: '' 
         },
 		'mid-ind': { 
-            name: 'Medieval India', 
+            name: 'Medieval India, WBCS PYQs', 
             link: '' 
         },
 		'mod-ind-i': { 
-            name: 'Modern India - Before 1857', 
+            name: 'Modern India - Before 1857, WBCS PYQs', 
             link: '' 
         },
 		'mod-ind-ii': { 
-            name: 'Modern India - After 1857', 
+            name: 'Modern India - After 1857, WBCS PYQs', 
             link: '' 
         },
 		'gandhi-after': { 
-            name: 'Gandhi & Mass Movements', 
+            name: 'Gandhi & Mass Movements, WBCS PYQs', 
             link: '' 
         },
 	}	
@@ -1635,16 +1857,224 @@ const subjectData = {
         el.disabled = true;
       });
     }
+	
+    function activateSearch() {
+        let searchBox = document.querySelector('.search-container');
+        let inputField = document.querySelector('.search-input');
+
+        searchBox.classList.add('active');
+        inputField.focus();
+
+        inputField.addEventListener('blur', function() {
+            if (!inputField.value.trim()) {
+                searchBox.classList.remove('active');
+            }
+        });
+    }	
+
+
+
+const synonymMapping = {
+    "fall": "decline",
+    "decline": "fall",
+    "dynasty": "empire",
+    "empire": "dynasty",
+	"cm": "chief minister",
+	"pm": "prime minister",	
+	"revolution": "uprising",
+	"empire": "kingdom",
+	"kingdom": "empire",	
+	"kingdom": "dynasty",
+	"dynasty": "kingdom",
+	"age": "period",
+	"period": "age"	
+};
+
+// Function to get synonyms of a word
+function getSynonym(word) {
+    return synonymMapping[word] || null;
+}
+
+// Function to add synonym-based results to the existing search
+function addSynonymResults(query, subjectData, existingResults) {
+    const synonym = getSynonym(query);
+
+    // If there's no synonym for the query, exit the function
+    if (!synonym) {
+        return [];
+    }
+
+    let synonymResults = [];
+    for (const subject in subjectData) {
+        for (const chapter in subjectData[subject].chapters) {
+            for (const topic in subjectData[subject].chapters[chapter].topics) {
+                const topicObj = subjectData[subject].chapters[chapter].topics[topic];
+                const topicName = topicObj.name.toLowerCase();
+
+                // If the topic contains the synonym and it's not already in the results
+                if (topicName.includes(synonym) && !existingResults.some(result => result.name === topicObj.name)) {
+                    synonymResults.push({
+                        subject,
+                        chapter,
+                        topic,
+                        name: topicObj.name,
+                        link: topicObj.link
+                    });
+                }
+            }
+        }
+    }
+
+    return synonymResults;
+}
+
+// Existing code integration
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector(".search-input");
+    const searchContainer = document.querySelector(".search-container");
+    let searchResultsContainer = document.createElement("div");
+    searchResultsContainer.classList.add("search-results");
+    searchContainer.appendChild(searchResultsContainer);
+
+    searchInput.addEventListener("input", function () {
+        let query = searchInput.value.toLowerCase();
+		if (!query.trim()) return;
+        searchResultsContainer.innerHTML = ""; // Clear previous results
+
+        if (query.length === 0) {
+            searchResultsContainer.style.display = "none";
+            return;
+        }
+
+        let matches = [];
+        for (const subject in subjectData) {
+            for (const chapter in subjectData[subject].chapters) {
+                for (const topic in subjectData[subject].chapters[chapter].topics) {
+                    const topicObj = subjectData[subject].chapters[chapter].topics[topic];
+                    if (topicObj.name.toLowerCase().includes(query)) {
+                        matches.push({
+                            subject,
+                            chapter,
+                            topic,
+                            name: topicObj.name,
+                            link: topicObj.link
+                        });
+                    }
+										
+					if (topicObj.tags && topicObj.tags.toLowerCase().includes(query)) {
+						matches.push({
+							subject,
+							chapter,
+							topic,
+							name: topicObj.name, // Show only the main name
+							link: topicObj.link
+						});
+					}
+		
+                }
+            }
+        }
+
+        // Call the synonym-based result function to add additional matches
+        const synonymMatches = addSynonymResults(query, subjectData, matches);
+        matches = [...matches, ...synonymMatches]; // Add synonym results to main matches
+
+        if (matches.length === 0) {
+            searchResultsContainer.style.display = "none";
+            return;
+        }
+
+        matches.forEach(match => {
+            let resultItem = document.createElement("div");
+            resultItem.classList.add("search-result-item");
+            resultItem.textContent = match.name;
+            resultItem.addEventListener("click", function () {
+                searchInput.value = match.name;
+                searchResultsContainer.style.display = "none";
+
+                // Set dropdown values
+                subjectSelect.value = match.subject;
+                subjectSelect.dispatchEvent(new Event("change"));
+
+                setTimeout(() => {
+                    chapterSelect.value = match.chapter;
+                    chapterSelect.dispatchEvent(new Event("change"));
+                }, 200);
+
+                setTimeout(() => {
+                    topicSelect.value = match.topic;
+                    topicSelect.dispatchEvent(new Event("change"));
+                }, 400);
+
+                // Activate Start Test button
+                startTestButton.classList.add("active");
+                startTestButton.disabled = false;
+                startTestButton.dataset.link = match.link;
+            });
+            searchResultsContainer.appendChild(resultItem);
+        });
+
+        searchResultsContainer.style.display = "block";
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!searchContainer.contains(event.target)) {
+            searchResultsContainer.style.display = "none";
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector(".search-input");
+    const searchResults = document.querySelector(".search-results");
+    const elementsToHide = document.querySelectorAll(".vidyaquote, #subject, #start-test, #chapter, #topic");
+
+    function showSearchResults() {
+        searchResults.style.display = "block";
+        elementsToHide.forEach(el => el.style.visibility = "hidden"); // Hide but keep space
+    }
+
+    function hideSearchResults() {
+        searchResults.style.display = "none";
+        elementsToHide.forEach(el => el.style.visibility = "visible"); // Restore visibility
+    }
+
+    // Show results when typing
+    searchInput.addEventListener("input", function () {
+        if (this.value.length > 0) {
+            showSearchResults();
+        } else {
+            hideSearchResults();
+        }
+    });
+
+    // Hide search results and bring back elements when a test is selected
+    searchResults.addEventListener("click", function (e) {
+        if (e.target.classList.contains("search-result-item")) {
+            hideSearchResults();
+        }
+    });
+
+    // Clicking outside should hide results and restore elements
+    document.addEventListener("click", function (e) {
+        if (!searchResults.contains(e.target) && !searchInput.contains(e.target)) {
+            hideSearchResults();
+        }
+    });
+});
+
+	
 </script>	
 </div>
-<div class="container100bn" style="user-select: none;" id="targetContainer"><div class="intro-text" style="font-size: 28px; background-color: #F4F4F4; border-radius: 12px; padding: 1%; display: inline-block; font-family: 'Tiro Bangla', Arial, sans-serif; user-select: none;">১০৩ টি বাংলা সেট&nbsp;<svg style="vertical-align: -4px;" width="26px" height="26px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16 12.75H12.75V16C12.75 16.41 12.41 16.75 12 16.75C11.59 16.75 11.25 16.41 11.25 16V12.75H8C7.59 12.75 7.25 12.41 7.25 12C7.25 11.59 7.59 11.25 8 11.25H11.25V8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V11.25H16C16.41 11.25 16.75 11.59 16.75 12C16.75 12.41 16.41 12.75 16 12.75Z" fill="#292D32"></path> </g> </svg></div><div class="intro-text" style="font-size: 14px; color: black; font-family: 'Tiro Bangla', Arial, sans-serif; user-select: none;"><a class="highlight-yellow">&nbsp;দশ হাজার+ প্রশ্ন-উত্তর&nbsp;</a> — পিএসসি ও পুলিশের যেকোনো পরীক্ষার জন্য উপযোগী; প্রতিটি সেটে ১০০-টি করে প্রশ্ন রয়েছে।<br>প্রতি রবিবার একটি করে নতুন সেট সংযুক্ত করা হয়।</div><div style="height: 2px;"></div><div class="button-container">
+<div class="container100bn" style="user-select: none;" id="targetContainer"><div class="intro-text" style="font-size: 28px; background-color: #F4F4F4; border-radius: 12px; padding: 1%; display: inline-block; font-family: 'Tiro Bangla', Arial, sans-serif; user-select: none;">১০৫ টি বাংলা সেট&nbsp;<svg style="vertical-align: -4px;" width="26px" height="26px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier"> <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16 12.75H12.75V16C12.75 16.41 12.41 16.75 12 16.75C11.59 16.75 11.25 16.41 11.25 16V12.75H8C7.59 12.75 7.25 12.41 7.25 12C7.25 11.59 7.59 11.25 8 11.25H11.25V8C11.25 7.59 11.59 7.25 12 7.25C12.41 7.25 12.75 7.59 12.75 8V11.25H16C16.41 11.25 16.75 11.59 16.75 12C16.75 12.41 16.41 12.75 16 12.75Z" fill="#292D32"></path> </g> </svg></div><div class="intro-text" style="font-size: 14px; color: black; font-family: 'Tiro Bangla', Arial, sans-serif; user-select: none;"><a class="highlight-yellow">&nbsp;দশ হাজার+ প্রশ্ন-উত্তর&nbsp;</a> — পিএসসি ও পুলিশের যেকোনো পরীক্ষার জন্য উপযোগী; প্রতিটি সেটে ১০০-টি করে প্রশ্ন রয়েছে।<br>প্রতি রবিবার একটি করে নতুন সেট সংযুক্ত করা হয়।</div><div style="height: 2px;"></div><div class="button-container">
 <script>
-document.write(`<a href="https://testkeen.com/demo/bengaliset1" class="button100bn" draggable="false">Set 1<span class="free-badge-bn">FREE</span></a><a href="https://testkeen.com/demo/bengaliset2" class="button100bn" draggable="false">Set 2<span class="free-badge-bn">FREE</span></a><a href="https://testkeen.com/demo/bengaliset3" class="button100bn" draggable="false">Set 3<span class="free-badge-bn">FREE</span></a>`); for (let i = 4; i <= 103; i++) {document.write(`<a href="javascript:void(0);" class="button100bn" draggable="false" onclick="navigateToSet(${i})">Set ${i}</a>`);} function navigateToSet(setNumber) {window.location.href = `https://sites.google.com/view/m100ptests/m100bnsets/testkeen-bengali-set-${setNumber}`;}
+document.write(`<a href="https://testkeen.com/demo/bengaliset1" class="button100bn" draggable="false">Set 1<span class="free-badge-bn">FREE</span></a><a href="https://testkeen.com/demo/bengaliset2" class="button100bn" draggable="false">Set 2<span class="free-badge-bn">FREE</span></a><a href="https://testkeen.com/demo/bengaliset3" class="button100bn" draggable="false">Set 3<span class="free-badge-bn">FREE</span></a>`); for (let i = 4; i <= 105; i++) {document.write(`<a href="javascript:void(0);" class="button100bn" draggable="false" onclick="navigateToSet(${i})">Set ${i}</a>`);} function navigateToSet(setNumber) {window.location.href = `https://sites.google.com/view/m100ptests/m100bnsets/testkeen-bengali-set-${setNumber}`;}
 </script>
 </div>
 <div style="height: 2px;"></div>
 <div class="concl-text" style="font-size: 14px; font-family: 'Tiro Bangla', Arial, sans-serif; color: gray;">এই সেটগুলি শুধুমাত্র মেম্বারদের জন্য। মেম্বারশিপ নিতে <a href="https://testkeen.com/membership" style="text-decoration: none;">এখানে ক্লিক করুন।</a></div></div>
-<div class="info"><div class="left-links"><button class="btn info-btn" onclick="togglePopup()" style="font-family: 'Open Sans', sans-serif; display: inline-block; width: auto; white-space: nowrap;">&nbsp;&nbsp;Info&nbsp;&nbsp;</button><div class="popup" id="popup"><a href="https://testkeen.com/contact" class="btn">Contact</a><a href="https://api.whatsapp.com/send?phone=916291032551&text=" class="btn">WhatsApp</a><a href="https://testkeen.com/membership" class="btn">Membership</a><a href="https://testkeen.com/policy" class="btn">Privacy & Policy</a></div></div><div class="right-links"><a href="https://facebook.com/testkeen" class="btn" target="_blank"> <svg fill="#666" width="13px" height="13px" viewBox="0 0 24 24" style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" stroke="#666"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"></path> </g></svg></a><a class="btn">&nbsp;&nbsp;&copy; Testkeen • Howrah&nbsp;&nbsp;</a></div></div>
+<div class="info"><div class="left-links"><button class="btn info-btn" onclick="togglePopup()" style="font-family: 'Open Sans', sans-serif; display: inline-block; width: auto; white-space: nowrap;">&nbsp;&nbsp;Info&nbsp;&nbsp;</button><div class="popup" id="popup"><a href="https://testkeen.com/contact" class="btn">Contact</a><a href="https://api.whatsapp.com/send?phone=916291032551&text=" class="btn">WhatsApp</a><a href="https://testkeen.com/membership" class="btn">Membership</a><a href="https://testkeen.com/policy" class="btn">Privacy & Policy</a></div></div><div class="right-links"><a href="https://facebook.com/testkeen" class="btn" target="_blank"> <svg fill="#666" width="13px" height="13px" viewBox="0 0 24 24" style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" stroke="#666"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 2.03998C6.5 2.03998 2 6.52998 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.84998C10.44 7.33998 11.93 5.95998 14.22 5.95998C15.31 5.95998 16.45 6.14998 16.45 6.14998V8.61998H15.19C13.95 8.61998 13.56 9.38998 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.52998 17.5 2.03998 12 2.03998Z"></path> </g></svg></a><a class="btn">&nbsp;&nbsp;&copy; Testkeen • 033&nbsp;&nbsp;</a></div></div>
 <script>
   setTimeout(function () {
     document.getElementById("loading-spinner").style.display = "none"; 
