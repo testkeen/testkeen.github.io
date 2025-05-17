@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <title>WB State Govt Employee Arrear DA Calculator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+    body {
+      font-family: "Open Sans", sans-serif;
+	  font-size: 20px;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      color: #333;
+    }
+
+    h2 {
+      color: #444444;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    /* Containers for each section */
+    .section {
+      background: #F4F4F4;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    /* Inline inputs container */
+    .inline-inputs {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .inline-inputs label {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 200px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #444;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"],
+    input[type="month"],
+	input[type="text"],
+    textarea {
+      font-size: 14px;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    input[type="number"]:focus,
+    input[type="month"]:focus,
+	input[type="text"]:focus,	
+    textarea:focus {
+      outline: none;
+      border-color: #4CAF50;
+      background: #fff;
+    }
+	
+	label input {
+		margin-top: 4px; /* Adjust as needed */
+	}
+
+    /* Smaller textarea for increments */
+    #increments {
+      width: 100%;
+      height: 70px;
+      resize: vertical;
+      font-size: 13px;
+	  display: block;
+	  margin-top: 6px;
+    }
+
+    /* Label for increments with line break */
+    .increments-label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    button {
+      padding: 12px 28px;
+      background: #0047AB;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      display: block;
+      margin: 0 auto;
+      margin-top: 10px;
+      user-select: none;
+      width: 260px;
+    }
+
+    button:hover {
+      background-color: #043478;
+    }
+
+    .result {
+      background: #f0f0f0;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: pre-line;
+      color: #222;
+      <!-- max-height: 320px; -->
+      overflow-y: auto;
+      font-family: monospace;
+    }
+
+    .nb {
+      font-size: 12px;
+      color: #666;
+      margin-top: 15px;
+      text-align: center;
+    }
+	.result table th, .result table td {
+	  text-align: center;
+	}
+	.result table {
+	  font-size: 14px;
+	}	
+	
+  </style>
+</head>
+<body>
+
+  <h2>WB State Govt Employee Arrear DA Calculator</h2>
+
+  <div class="section inline-inputs">
+    <label>From Date
+      <input type="month" id="fromDate" value="2008-04" min="2008-04" max="2019-12" />
+    </label>
+
+    <label>To Date
+      <input type="month" id="toDate" value="2019-12" max="2019-12" />
+    </label>
+  </div>
+
+  <div class="section">
+    <label>Basic Pay &nbsp;&nbsp;&nbsp;
+      <input type="number" id="basicPay" placeholder="Enter your Basic Pay" />
+    </label>
+  </div>
+
+  <div class="section">
+    <label class="increments-label">For promotion/CAS, enter updated basic pay (<b>yyyy-mm amount</b>). (Skip if N/A)</label>
+	<textarea id="increments" placeholder="2010-05 11200&#10;2018-05 15800"></textarea>
+  </div>
+
+  <button onclick="calculateDA()">Calculate Arrear DA</button>
+
+  <div class="result" id="output"></div><br>
+  
+<div class="section inline-inputs" id="printSection" style="display: none;">
+  <label>Name
+    <input type="text" id="userName" placeholder="Enter employee name" />
+  </label>
+
+  <label>Designation
+    <input type="text" id="userDesignation" placeholder="Enter designation" />
+  </label>
+
+  <button id="printBtn" onclick="printOutput()">Print</button>
+</div>
+
+
+  <div class="nb">
+    <p>✅ N.B. Error may occur. Please double-check the output. Visit <a href="https://www.testkeen.com" style="text-decoration: none;">Home</a>.</p>
+  </div>
+  <script>
+    const centralDA = {
+      "2008-01": 12, "2008-07": 16, "2009-01": 22, "2009-07": 27,
+      "2010-01": 35, "2010-07": 45, "2011-01": 51, "2011-07": 58,
+      "2012-01": 65, "2012-07": 72, "2013-01": 80, "2013-07": 90,
+      "2014-01": 100, "2014-07": 107, "2015-01": 113, "2015-07": 119,
+      "2016-01": 125, "2016-07": 132, "2017-01": 136, "2017-07": 139,
+      "2018-01": 142, "2018-07": 148, "2019-01": 154, "2019-07": 164
+    };
+
+    const stateDA = {
+      "2008-04": 2, "2008-06": 6, "2008-11": 9, "2009-03": 12,
+      "2009-04": 16, "2009-12": 22, "2010-04": 27, "2010-12": 35,
+      "2012-01": 45, "2013-01": 52, "2014-01": 58, "2015-01": 65,
+      "2016-01": 75, "2017-01": 85, "2018-01": 100, "2019-01": 125
+    };
+
+    function getNearestRate(date, rateTable) {
+      let nearest = null;
+      for (let d in rateTable) {
+        if (d <= date) nearest = d;
+      }
+      return nearest ? rateTable[nearest] : 0;
+    }
+
+    function parseIncrements(text) {
+      const lines = text.split("\n").map(d => d.trim()).filter(Boolean);
+      const map = {};
+      for (let line of lines) {
+        const parts = line.split(/\s+/);
+        if (parts.length === 2) {
+          const [date, updatedPay] = parts;
+          map[date] = parseFloat(updatedPay);
+        } else {
+          map[line] = "increment"; // regular 3% increment
+        }
+      }
+      return map;
+    }
+
+    function addMonth(date) {
+      let [y, m] = date.split("-").map(Number);
+      m++;
+      if (m > 12) { m = 1; y++; }
+      return `${y}-${m.toString().padStart(2, '0')}`;
+    }
+
+function calculateDA() {
+  const basicStart = parseFloat(document.getElementById("basicPay").value);
+  const from = document.getElementById("fromDate").value;
+  const to = document.getElementById("toDate").value;
+  const incrementMap = parseIncrements(document.getElementById("increments").value);
+
+  let output = `<b>Statement of Arrear Calculation of Dearness Allowances for the period from ${from} to ${to}:</b><br><br>CDA = Central DA; SDA = State DA<br><br>`;
+  output += `<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead style="background: #f0f0f0;">
+      <tr>
+        <th>Month</th>
+        <th>Basic Pay (₹)</th>
+        <th>CDA %</th>
+        <th>CDA (₹)</th>
+        <th>SDA %</th>
+        <th>SDA (₹)</th>
+        <th>Dif (₹)</th>
+      </tr>
+    </thead>
+    <tbody>`;
+
+  let date = from;
+  let basic = basicStart;
+  let totalDiff = 0;
+
+  while (date <= to) {
+    if (incrementMap[date]) {
+      if (incrementMap[date] === "increment") {
+        basic = customRound(basic);
+      } else {
+        basic = incrementMap[date];
+      }
+    } else if (date.endsWith("-07")) {
+      basic = customRound(basic);
+    }
+
+    const cDA = getNearestRate(date, centralDA);
+    const sDA = getNearestRate(date, stateDA);
+
+    const cAmt = (basic * cDA) / 100;
+    const sAmt = (basic * sDA) / 100;
+    const diff = cAmt - sAmt;
+    totalDiff += diff;
+
+    output += `<tr>
+      <td>${date}</td>
+      <td>${basic.toFixed(2)}</td>
+      <td>${cDA.toFixed(0)}%</td>
+      <td>${cAmt.toFixed(2)}</td>
+      <td>${sDA.toFixed(0)}%</td>
+      <td>${sAmt.toFixed(2)}</td>
+      <td>${diff.toFixed(2)}</td>
+    </tr>`;
+
+    date = addMonth(date);
+  }
+
+  const finalAmount = totalDiff * 0.25;
+  output += `</tbody></table>`;
+  output += `<br><b>Total DA Difference: Rs ${totalDiff.toFixed(2)}</b><br>`;
+  output += `<b>25% of DA Difference: Rs ${finalAmount.toFixed(2)}</b><br>`;
+
+  document.getElementById("output").innerHTML = output;
+  document.getElementById("printSection").style.display = "flex";
+
+}
+
+	
+	function customRound(basic) {
+  basic = basic * 1.03;
+
+  let lastDigit = Math.floor(basic) % 10;
+  let paisa = basic - Math.floor(basic);
+  let subPart = lastDigit + paisa;
+
+  if (subPart >= 1) {
+    basic = Math.ceil(basic / 10) * 10;
+  } else {
+    basic = Math.floor(basic / 10) * 10;
+  }
+
+  return basic;
+}
+
+  const basicPayInput = document.getElementById('basicPay');
+  const calculateBtn = document.querySelector('button');
+
+  function toggleButton() {
+    if (basicPayInput.value.trim() === '') {
+      calculateBtn.disabled = true;
+      calculateBtn.style.opacity = '0.6';  // visually indicate disabled state
+      calculateBtn.style.cursor = 'not-allowed';
+    } else {
+      calculateBtn.disabled = false;
+      calculateBtn.style.opacity = '1';
+      calculateBtn.style.cursor = 'pointer';
+    }
+  }
+
+  // Initial check on page load
+  toggleButton();
+
+  // Listen to input events on Basic Pay field
+  basicPayInput.addEventListener('input', toggleButton);
+  </script>
+  <script>
+function printOutput() {
+  const content = document.getElementById("output").innerHTML;
+  const name = document.getElementById("userName").value || "";
+  const designation = document.getElementById("userDesignation").value || "";
+
+  const win = window.open('', '', 'height=700,width=900');
+  win.document.write('<html><head><title>Print Arrear Statement</title>');
+  win.document.write('<style>');
+  win.document.write('body { font-family: "Times New Roman", serif; font-size: 14px; margin: 20px; }');
+  win.document.write('table { border-collapse: collapse; width: 100%; margin-top: 20px; }');
+  win.document.write('th, td { border: 1px solid #444; padding: 8px; text-align: left; }');
+  win.document.write('th { background: #f0f0f0; }');
+  win.document.write('.signature { margin-top: 20px; }');
+  win.document.write('</style>');
+  win.document.write('</head><body>');
+  win.document.write(`<div class="signature"><b>Name:</b> ${name}<br><b>Designation:</b> ${designation}</div><br>`);
+  win.document.write(content);
+  win.document.write('</body></html>');
+  win.document.close();
+  win.print();
+}
+</script>
+</body>
+</html>
