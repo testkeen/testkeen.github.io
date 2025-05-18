@@ -53,7 +53,14 @@
       font-weight: 600;
       font-size: 14px;
       color: #444;
+      min-width: 140px;	    
     }
+    @media (max-width: 480px) {
+      .inline-inputs {
+	flex-direction: column;
+	gap: 10px;
+	}
+     }	  
 
     label {
       font-weight: 600;
