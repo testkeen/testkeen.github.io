@@ -36,6 +36,12 @@
   .faq-answer {
     line-height: 1.6;
   }
+  
+  .faq-answer p {
+  margin-top: 4px;    /* Reduce vertical space between paragraphs */
+  margin-bottom: 4px; /* Reduce vertical space between paragraphs */
+  margin-left: 20px;  /* Add left margin */
+}
 .check {
   display: inline-block;
   width: 20px;
@@ -63,10 +69,71 @@ a[href="https://testkeen.com/membership"]:hover {
   background-color: #3367D6 !important; /* a darker blue hover */
 }
 
+
+.list-item {
+    display: flex; /* Makes the p tag a flex container */
+    align-items: baseline; /* Aligns the emoji and the start of the text at the same baseline */
+}
+
+.list-item span:first-child { /* Targets the emoji span */
+    margin-right: 8px; /* Adds some space between the emoji and the text */
+    flex-shrink: 0; /* Prevents the emoji from shrinking if space is tight */
+}
+
+.list-item span:last-child { /* Targets the text span */
+    flex-grow: 1; /* Allows the text to take up available space */
+}
 </style>
 </head>
 <body>
     <h1>FAQs</h1>
+	<div class="faq-item">
+	  <div class="faq-question">What will I get here?</div>
+	  <div class="faq-answer">
+		<p class="list-item"><span>🌊</span><span>1,00,000+ Question-Answers</span></p>
+		<p class="list-item"><span>🧪</span><span>In-Depth Chapterwise Tests–All Subjects</span></p>
+		<p class="list-item"><span>⏱️</span><span>Daily 1 New Full-Length Set (100Q) in English</span></p>
+		<p class="list-item"><span>📅</span><span>112+ Full-Length Bengali Sets (Sundays +1) (100Q/Set)</span></p>
+
+		<p class="list-item"><span>📰</span><span>Daily/Weekly/Monthly Current Affairs (PDF + Tests)</span></p>
+		<p class="list-item"><span>📝</span><span>CA related special GK/GS Test</span></p>
+		<p class="list-item"><span>📘</span><span>Complete English–Grammar, Vocab & Descriptive</span></p>
+		<p class="list-item"><span>📚</span><span>Covers All SSC Exam PYQs + WBPSC PYQs</span></p>
+		<p class="list-item"><span>📕</span><span>Covers hundreds of UPSC Prelims PYQs</span></p>
+		<p class="list-item"><span>🏷️</span><span>Affordable Price— Just ₹100/Y</span></p>
+		<p class="list-item"><span>♾️</span><span>Unlimited Attempts for All Tests</span></p>
+	  </div>
+	</div>
+
+	<div class="faq-item">
+	  <div class="faq-question">Why Testkeen?</div>
+	  <div class="faq-answer">
+		<p>Dark Horses 🐎 Train Differently! Beat exam fear with Daily Training—Face Every Test with Confidence. Testkeen offers more than just practice tests; with daily assessments and comprehensive chapter-wise tests, it empowers you to elevate your mindset and confidently crack the real exam.</p><br>
+
+		<p>We Focus to Boost—</p>
+		
+		<p class="list-item"><span>🚀</span><span>Speed</span></p>
+		<p class="list-item"><span>🎯</span><span>Accuracy</span></p>
+		<p class="list-item"><span>📈</span><span>Confidence</span></p>
+		<p class="list-item"><span>⏱️</span><span>Time Control</span></p>
+		<p class="list-item"><span>✨</span><span>Option Elimination</span></p>
+		<p class="list-item"><span>🏋️</span><span>Exam Stamina</span></p>
+		<p class="list-item"><span>🧠</span><span>Comprehension</span></p>
+		<p class="list-item"><span>🔍</span><span>Pattern Recognition</span></p><br>
+		<p class="list-item"><span>🔓</span><span>Unlock Daily Extensive Practice</span></p>
+		<p class="list-item"><span>🕒</span><span>Attempt Test Anytime/Anywhere</span></p>
+		<p class="list-item"><span>♾️</span><span>Unlimited Attempts</span></p>
+		<p class="list-item"><span>🧭</span><span>Practise Like It's the Real Exam Hall – Every Day!</span></p>
+		<p class="list-item"><span>🔍︎</span><span>Search-Select-Start Test : Simplest Ever</span></p>
+		<p class="list-item"><span>🎓</span><span>Also Helpful for XI/XII/College Students</span></p>
+		<p class="list-item"><span>📱</span><span>Mobile & 💻 PC Friendly UI</span></p>
+		<p class="list-item"><span>📢</span><span>No Advertisement Distraction on Testkeen</span></p><br>
+		<p class="list-item"><span>🏷️</span><span>Affordable Price— Just ₹100/Y</span></p>
+		<p class="list-item"><span>🌐</span><span>Demo+Membership— testkeen.com</span></p>
+		<p class="list-item"><span>🗪</span><span>WhatsApp— +91 62910 32551</span></p>
+		<p class="list-item"><span>ⓕ</span><span>www.facebook.com/testkeen</span></p>
+	  </div>
+	</div>
 
     <div class="faq-item">
       <div class="faq-question">What is Daily Test?</div>
@@ -81,7 +148,7 @@ a[href="https://testkeen.com/membership"]:hover {
           <li>10 Questions from General Intelligence / Reasoning</li>
           <li>10 Questions from Daily Current Affairs</li>
         </ul>
-        <p><span class="check">✅</span>There are no limit of attempts for a Daily Test.</p>
+        <p><span class="check">✅</span>There are no limits on attempts for a Daily Test.</p>
         <p><span class="check">✅</span>Daily Test updates every day by 12 PM.</p>
         <p><span class="check">✅</span>Daily Test shows your Score/accuracy/time taken etc.</p>
         <p><span class="check">✅</span>After completing the test, you can view the Wrongly Attempted Questions with correct answer only in One Liner Format to revise it quickly and take a note.</p>
@@ -93,7 +160,7 @@ a[href="https://testkeen.com/membership"]:hover {
       <div class="faq-answer">
         <p><span class="check">✅</span>There are chapter/topicwise tests available from all subjects for members only. One can either select a subject/chapter/topic and Start Test; or, search for a chapter/topic from the Search Bar directly on the Test Desk.</p>
         <p><span class="check">✅</span>It covers almost all chapters across all subjects. The questions are set in a way that it covers from basic to advanced level. Organised conceptually — so that, it runs in parallel to books but in test forms.</p>
-        <p><span class="check">✅</span>There are no limit of attempts.</p>
+        <p><span class="check">✅</span>Unlimited attempts allowed.</p>
       </div>
     </div>
 
@@ -106,7 +173,7 @@ a[href="https://testkeen.com/membership"]:hover {
           <li>Weekly — 100 CA from last 10 days are provided in the Test Desk as full sets on Sundays. This is available in both English and Bengali languages.</li>
           <li>Monthly — 300/310 Questions are updated as a single monthly test in the Test Desk along with its Downloadable PDF format.</li>
         </ol>
-		<p><span class="check">✅</span>There are no limit of attempts.</p>
+		<p><span class="check">✅</span>Unlimited attempts allowed.</p>
       </div>
     </div>
 	
